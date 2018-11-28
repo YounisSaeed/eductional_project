@@ -1324,7 +1324,7 @@ video::-webkit-media-text-track-display {
   text-align: right;
   vertical-align: bottom; }
 
-@supports (display: grid) {
+/*@supports (display: grid) {
   .vjs-text-track-settings .vjs-modal-dialog-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1338,7 +1338,7 @@ video::-webkit-media-text-track-display {
     grid-row: 1; }
   .vjs-text-track-settings .vjs-track-settings-controls {
     grid-column: 2;
-    grid-row: 2; } }
+    grid-row: 2; } }*/
 
 .vjs-track-setting > select {
   margin-right: 5px; }

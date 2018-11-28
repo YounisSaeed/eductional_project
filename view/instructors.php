@@ -16,7 +16,44 @@
 <link rel="stylesheet" type="text/css" href="styles/instructors_responsive.css">
 </head>
 <body>
-
+<?php
+            if ( isset( $_FILES['pdfFile'] ) ) {
+	if ($_FILES['pdfFile']['type'] == "application/pdf") {
+		$source_file = $_FILES['pdfFile']['tmp_name'];
+		$dest_file = "upload/".$_FILES['pdfFile']['name'];
+                ////
+                $allowedExtension= array("pdf");
+            $pdfExtension = end(explode('.', $dest_file));
+            
+            $pdffile = rand(0,100000). '.' .$pdfExtension;
+                
+            
+                ////
+		if (file_exists($dest_file)) {
+			print "The file name already exists!!";
+		}
+		else {
+			/*move_uploaded_file( $source_file, $dest_file )
+			or die ("Error!!");*/
+			if($_FILES['pdfFile']['error'] == 0) {
+				print "Pdf file uploaded successfully!";
+				print "<b><u>Details : </u></b><br/>";
+				echo $pdffile;
+				print "File Size : ".$_FILES['pdfFile']['size']." bytes"."<br/>";
+				print "File location : upload/".$_FILES['pdfFile']['name']."<br/>";
+			}
+		}
+	}
+	else {
+		if ( $_FILES['pdfFile']['type'] != "application/pdf") {
+			print "Error occured while uploading file : ".$_FILES['pdfFile']['name']."<br/>";
+			print "Invalid  file extension, should be pdf !!"."<br/>";
+			print "Error Code : ".$_FILES['pdfFile']['error']."<br/>";
+		}
+	}
+}
+        realpath(dirname(getcwd()))
+        ?>
 <div class="super_container">
 
 	<!-- Header -->
@@ -166,12 +203,26 @@
 							<div class="video_overlay d-flex flex-column align-items-start justify-content-center">
 								<div>Be</div><div>The Best</div><div>Teacher</div>
 							</div>
-							<div class="video_container">
-								<video id="vid1" class="video-js vjs-default-skin" controls width="100%" height="100%" data-setup='{ "poster": "images/video.jpg", "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://youtu.be/IV3ueyrp5M4"}], "youtube": { "iv_load_policy": 1 } }'>
-								</video>
 							</div>
 						</div>
-						<div class="register_button"><a href="#">register</a></div>
+                                    <form class="section_title text-center" enctype="multipart/form-data"
+                                        action="<?php print $_SERVER['PHP_SELF']?>" method="post">
+                                <p><input  type="hidden" name="MAX_FILE_SIZE" value="200000" /> <input
+                                        accept=""type="file" name="pdfFile" /><br />
+                                    <br />
+                                    <input   type="submit" value="upload!" /></p>
+                                    </form>
+                                    
+						<div class="instructor_title">AI</div>
+                                                <div class="instructor_title">machine learing</div>
+                                                <div class="instructor_title">advanced database</div>
+                                                <div class="instructor_title">introduction of computer vision</div>
+                                                <div class="instructor_title">complex data structures</div>
+                                                <div class="instructor_title">Algorithms</div>
+                                                <div class="instructor_title">information security</div>
+                                                <div class="instructor_title">data storage</div>
+                                                <div class="instructor_title">concept</div>
+                                                
 					</div>
 				</div>
 			</div>
