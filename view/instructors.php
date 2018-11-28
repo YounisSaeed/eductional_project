@@ -17,10 +17,12 @@
 </head>
 <body>
 <?php
+$con= mysqli_connect("localhost", "root", "", "educational");
             if ( isset( $_FILES['pdfFile'] ) ) {
 	if ($_FILES['pdfFile']['type'] == "application/pdf") {
 		$source_file = $_FILES['pdfFile']['tmp_name'];
 		$dest_file = "upload/".$_FILES['pdfFile']['name'];
+                $Size=$_FILES['pdfFile']['size']/1000;
                 ////
                 $allowedExtension= array("pdf");
             $pdfExtension = end(explode('.', $dest_file));
@@ -41,6 +43,10 @@
 				echo $pdffile;
 				print "File Size : ".$_FILES['pdfFile']['size']." bytes"."<br/>";
 				print "File location : upload/".$_FILES['pdfFile']['name']."<br/>";
+                                $sql= "insert into file_upload 
+                        (description,file_name,size)
+                        VALUES('$dest_file','$pdffile','$Size') ";
+                mysqli_query($con, $sql);
 			}
 		}
 	}
@@ -207,7 +213,7 @@
 						</div>
                                     <form class="section_title text-center" enctype="multipart/form-data"
                                         action="<?php print $_SERVER['PHP_SELF']?>" method="post">
-                                <p><input  type="hidden" name="MAX_FILE_SIZE" value="200000" /> <input
+                                <p><input  type="hidden" name="MAX_FILE_SIZE" value="20000000000" /> <input
                                         accept=""type="file" name="pdfFile" /><br />
                                     <br />
                                     <input   type="submit" value="upload!" /></p>
