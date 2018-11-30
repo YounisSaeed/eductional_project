@@ -3,11 +3,9 @@ include_once 'connection.php';
 ?>
 
 <?php
-    $query = "select * from `usertype`";
+    $query = "select * from `usertype` where typ!='admin' ";
     $result = mysqli_query($conn, $query); 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +22,8 @@ include_once 'connection.php';
 <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 <link rel="stylesheet" type="text/css" href="styles/control panel.css">
+<link rel="stylesheet" type="text/css" href="styles/admin.css">
+
 </head>
 <body>
 
@@ -127,7 +127,9 @@ include_once 'connection.php';
 		</div>
 
 	</header>
- <div class="privlege">
+
+
+<div class="privlege">
      <form method="post" action='Privilege.php'>
              <select name="usertype" id="usertype" value="usertype">
                 
@@ -141,16 +143,28 @@ include_once 'connection.php';
                </select>
                
                <div class="check">
-                  <input type="checkbox" id = "pagename" value="pageName_1" name="pagename"> Home
-                  <input type="checkbox" id = "pagename" value="pageName_2" name="pagename"> Courses
-                  <input type="checkbox" id = "pagename" value="pageName_3" name="pagename"> Instructor
+               <input type="checkbox" id = "pagename" value="pageName_1" name="pagename"> Home
+               <input type="checkbox" id = "pagename" value="pageName_2" name="pagename"> Courses
+               <input type="checkbox" id = "pagename" value="pageName_3" name="pagename"> Instructor
                </div>
                
-               <button value="submit" name="submit"> Submit</button>
+               <button value="send" name="send"> Submit</button>
            </form>
       
     </div>
-        
- </div>
+        <div class="ins">
+            <form >
+                <P>Instructor Privillege :</P>
+                <div class="radio">
+                    <input type="radio" name="a"> yes
+                    <input type="radio" name="a">  NO 
+                </div>
+                 <button value="done" name="done">done</button>
+
+            </form>
+           
+          
+        </div>   
+  </div>
 </body>
 </html>

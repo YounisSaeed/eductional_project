@@ -30,7 +30,10 @@ button
     height: 40px;
     width: 100px;
     margin-left: 620px;
-    margin-top: 90px;
-    padding-left: 0px;
-    
+    margin-top: 60px;
+    padding-left: 0px;    
+}
+button:hover
+{
+    cursor:pointer 
 }

@@ -1,0 +1,25 @@
+body
+{
+    background-image:url(../images/pexels-photo-374006.jpeg);
+    color :#000
+        
+}
+.ins p{
+    color :#000;
+    padding-left: 450px;
+    padding-top: 40px;
+}
+.radio
+{
+    margin-left:560px;
+}
+.radio input {
+     margin-left: 35px;
+}
+.radio p {
+    color :#fff;
+}
+button 
+{
+    margin-top: 40px;
+}
