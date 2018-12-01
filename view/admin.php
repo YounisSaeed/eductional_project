@@ -148,18 +148,18 @@ include_once 'connection.php';
                <input type="checkbox" id = "pagename" value="pageName_3" name="pagename"> Instructor
                </div>
                
-               <button value="send" name="send"> Submit</button>
+               <button  name="send"> Submit</button>
            </form>
       
     </div>
         <div class="ins">
-            <form >
+            <form action="Privilege.php" method="post">
                 <P>Instructor Privillege :</P>
                 <div class="radio">
-                    <input type="radio" name="a"> yes
-                    <input type="radio" name="a">  NO 
+                    <input type="radio" name="upload" value="yes"> yes
+                    <input type="radio" name="upload" value="no">  NO 
                 </div>
-                 <button value="done" name="done">done</button>
+                 <button name="done">done</button>
 
             </form>
            

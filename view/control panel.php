@@ -146,7 +146,7 @@ include_once 'connection.php';
                   <input type="checkbox" id = "pagename" value="pageName_3" name="pagename"> Instructor
                </div>
                
-               <button value="submit" name="submit"> Submit</button>
+               <button name="submit"> Submit</button>
            </form>
       
     </div>

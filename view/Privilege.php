@@ -4,6 +4,7 @@ include_once 'connection.php';
 
 <?php    
 if(isset($_POST["submit"])){
+    
 $usertype = $_POST["usertype"];
 $pname = $_POST["pagename"];
 $newpage = implode("," ,$pname);
@@ -17,6 +18,7 @@ if($result)
 }
 
 else if(isset($_POST["send"])){
+    
 $usertype = $_POST["usertype"];
 $pname = $_POST["pagename"];
 $newpage = implode("," ,$pname);
@@ -26,5 +28,20 @@ if($result)
 {
     header("Location: admin.php?cooooont=success");
 }
+
 }
+
+else if(isset($_POST["done"])){
+    
+$upload = $_POST["upload"];
+$sql= "update `privilage` set upload = '$upload' where usr_id=2 ";
+$result = mysqli_query($conn, $sql);
+if($result)
+{
+    header("Location: admin.php?cooooont=success");
+}
+
+}
+
+
 ?>

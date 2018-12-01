@@ -211,6 +211,12 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 							</div>
 							</div>
 						</div>
+                                    <?php
+                                        $sql = "Select upload from `privilage` where usr_id= 2" ;
+                                        $result = mysqli_query($con,$sql);
+                                        $x = mysqli_fetch_array($result);
+                                    ?>
+                                     <?php if( $x[0] == "yes"  ) :?>
                                     <form class="section_title text-center" enctype="multipart/form-data"
                                         action="<?php print $_SERVER['PHP_SELF']?>" method="post">
                                 <p><input  type="hidden" name="MAX_FILE_SIZE" value="20000000000" /> <input
@@ -218,7 +224,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
                                     <br />
                                     <input   type="submit" value="upload!" /></p>
                                     </form>
-                                    
+                                    <?php endif ;?>
 						<div class="instructor_title">AI</div>
                                                 <div class="instructor_title">machine learing</div>
                                                 <div class="instructor_title">advanced database</div>
