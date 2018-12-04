@@ -33,7 +33,8 @@
 								<div class="top_bar_right ml-auto">
 
 									<!-- Language -->
-									<div class="top_bar_lang">
+									<!--
+                                                                        <div class="top_bar_lang">
 										<span class="top_bar_title">site language:</span>
 										<ul class="lang_list">
 											<li class="hassubs">
@@ -48,7 +49,7 @@
 											</li>
 										</ul>
 									</div>
-
+                                                                        -->
 									<!-- Social -->
 									<div class="top_bar_social">
 										<span class="top_bar_title social_title">follow us</span>
@@ -82,7 +83,7 @@
 									<li class="active"><a href="index.php">Home</a></li>
 									<li><a href="courses.php">Courses</a></li>
 									<li><a href="instructors.php">Instructors</a></li>
-									<li><a href="#">Events</a></li>
+									<!--<li><a href="#">Events</a></li>-->
 									<li><a href="blog.php">Blog</a></li>
 									<li><a href="contact.php">Contact</a></li>
 								</ul>

@@ -1,3 +1,12 @@
+<?php
+    include '../classes/visitor.php';
+    $vis=new visitor;
+    if(isset($_POST['submit'])){
+        if($vis->sendMessage('name', 'email', 'message')){
+            echo 'success';
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +39,7 @@
 								<div class="top_bar_right ml-auto">
 
 									<!-- Language -->
-									<div class="top_bar_lang">
+								<!--	<div class="top_bar_lang">
 										<span class="top_bar_title">site language:</span>
 										<ul class="lang_list">
 											<li class="hassubs">
@@ -45,7 +54,7 @@
 											</li>
 										</ul>
 									</div>
-
+-->
 									<!-- Social -->
 									<div class="top_bar_social">
 										<span class="top_bar_title social_title">follow us</span>
@@ -79,7 +88,7 @@
 									<li><a href="index.php">Home</a></li>
 									<li><a href="courses.php">Courses</a></li>
 									<li><a href="instructors.php">Instructors</a></li>
-									<li><a href="#">Events</a></li>
+									<!--<li><a href="#">Events</a></li>-->
 									<li><a href="blog.php">Blog</a></li>
 									<li><a href="contact.php">Contact</a></li>
 								</ul>
@@ -212,19 +221,19 @@
 				<div class="col-lg-6">
 					<div class="contact_form_container">
 						<div class="form_title">Get in Touch</div>
-						<form action="#" id="contact_form" class="contact_form">
+						<form method="post" id="contact_form" class="contact_form" >
 							<div class="row contact_row">
 								<div class="col-lg-6 contact_col">
-									<input type="text" class="form_input" placeholder="Name" required="required">
+                                                                    <input type="text" class="form_input" name="name" placeholder="Name" required="required">
 								</div>
 								<div class="col-lg-6 contact_col">
-									<input type="email" class="form_input" placeholder="Email" required="required">
+									<input type="email" class="form_input" name="email" placeholder="Email" required="required">
 								</div>
 								<div class="col-lg-12">
-									<textarea class="form_input form_text" placeholder="Message" required="required"></textarea>
+                                                                    <textarea class="form_input form_text" name="message" placeholder="Message" required="required"></textarea>
 								</div>
 								<div class="col">
-									<button type="submit" class="form_button trans_200">send message</button>
+                                                                    <button type="submit" name="submit" class="form_button trans_200">send message</button>
 								</div>
 							</div>
 						</form>
