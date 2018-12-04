@@ -8,19 +8,17 @@ if(isset($_POST["submit"])){
 $usertype = $_POST["usertype"];
 $pname =  $_POST["pagename"];
 //$newpage = implode(',' , $_POST["pagename"]);
-if ( empty($_POST["usertype"])  || empty($pname) ){
+
 $sql= "update `privilage` set pg_id = (select page_id from `urls` where page_name = '$pname' ) where usr_id = (select id FROM `usertype` where typ = '$usertype' )";
 $result = mysqli_query($conn, $sql);
      if($result)
         {
       header("Location: control panel.php?cooooont=success");
-      echo $newpage;
+      
         }
-} else {
-     echo "Error";
-}
+} 
 
-   }
+   
 
 
 
