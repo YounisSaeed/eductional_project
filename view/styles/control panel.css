@@ -1,7 +1,18 @@
 body {
-    background-image:url(../images/blog_admin.jpg)
+    margin: 0px;
 }
-select , button
+.privlege
+{
+    width:100%;
+    height:600px;
+    background-image:url(../images/blog_admin.jpg);
+}
+
+.privlege form {
+    padding-top: 250px;
+}
+
+select ,  button
 {
     display: block;
     background-color: #fff;
@@ -11,7 +22,7 @@ select , button
     height: 40px;
     width: 300px;
     padding-left: 15px;
-    margin-top: 200px;
+    margin-top: 0px;
     margin-left: 550px;
     border-radius: 15px;
 }
@@ -36,4 +47,33 @@ button
 button:hover
 {
     cursor:pointer 
+}
+.admin 
+{
+    width: 350px;
+    height: 350px;
+    border: 10px ;
+    border-color: black;
+    border-top: none;
+    margin: 50px;
+    color:#000;
+}
+.admin input
+{
+    margin-top: 20px;
+    border-radius:10px;
+    padding-left: 6px;   
+}
+.admin button
+{
+        margin-left:60px;
+}
+.admin input[type=text] , .admin input[type=email]
+{
+    width:250px;
+    height:30px;
+}
+.admin input[type=radio]
+{
+    margin-left: 10px;
 }

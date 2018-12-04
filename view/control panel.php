@@ -149,7 +149,28 @@ include_once 'connection.php';
                <button name="submit"> Submit</button>
            </form>
       
-    </div>
+   </div>
+        
+        
+  <div class="admin">
+      <p> Create New Admin </p>
+     <form method="post" action='Privilege.php'>
+          <input type ="text" name="f_name" placeholder="First name"> <br>
+          <input type ="text" name="l_name" placeholder="Last name"> <br>
+          <input type ="email" name="email" placeholder="E_mail"> <br><br>
+          Experience :
+          <input type ="radio" name="experience" value="medium"> medium
+          <input type ="radio" name="experience" value="good"> good
+          <input type ="radio" name="experience" value="very good"> very good
+          <button name="add"> Add </button>
+          
+      </from>
+  </div>
+        
+        
+        
+        
+        
         
  </div>
 </body>
