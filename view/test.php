@@ -4,7 +4,6 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<<<<<<< HEAD
 <html>
     <head>
         <meta charset="UTF-8">
@@ -17,35 +16,23 @@ and open the template in the editor.
         $email="";
         $errors=array();
         //connect database
-        $db= mysqli_connect('localhost', 'root', '', 'educational');
+        $db= mysqli_connect('localhost', 'root', '', 'education');
         //if the registeration button is click
-        if(isset($_POST['Registeration'])){
+        if(isset($_POST['Create Account'])){
             $name = mysql_real_escape_string($_POST['username']);
             $username = mysql_real_escape_string($_POST['username']);
-=======
-        <?php
-        $host="127.0.0.1";
-         $username="root";
-       // $email="";
-         $password="";
-         $dbName="educational";
-         $conn= mysqli_connect($host, $username, $password, $dbName);
-        if(isset($_POST['CreateAccount'])){
-           /* $name = mysql_real_escape_string($_POST['username']);
-              $username = mysql_real_escape_string($_POST['username']);
->>>>>>> 45c19a2c2aa1a7c38cde39ca87e15e4d46016414
              $email = mysql_real_escape_string($_POST['email']);
               $password = mysql_real_escape_string($_POST['password']);
                $repassword = mysql_real_escape_string($_POST['repassword']);
                $phonenumber = mysql_real_escape_string($_POST['phonenumber']);
                $birthday = mysql_real_escape_string($_POST['birthday']);
-<<<<<<< HEAD
+               $experience= mysql_real_escape_string($_POST['birthday']);
                $male = mysql_real_escape_string($_POST['male']);
                $female = mysql_real_escape_string($_POST['female']);
                $instructor = mysql_real_escape_string($_POST['instructor']);
                $student = mysql_real_escape_string($_POST['student']);
                //ensure that form fields are filled properly
-               if(empty($username))
+              if(empty($username))
                {
                    array_push($errors,"Username is required");
                     
@@ -68,6 +55,11 @@ and open the template in the editor.
                 if(empty($birthday))
                {
                    array_push($errors,"birthday is required");
+                    
+               }
+               if(empty($experience))
+               {
+                   array_push($errors,"experience is required");
                     
                }
                 if(empty($male))
@@ -94,10 +86,9 @@ and open the template in the editor.
                    array_push($errors, "The two passwords do not match");
                }
                //if there are no errors, save user to database
-               if(count($errors)==0){
-                   $password=md5($password);//encrypt password before storing in database(security)
-                   $sql="INSERT INTO users(name,username,email,password,phonenumber,birthday,male,female,instructor,student)
-                   VALUES('$name','$username','$email','$password','$phonenumber','$birthday','$male','$female','$instructor','$student')";
+               if(count($errors)==0){//$password=md5($password);//encrypt password before storing in database(security)
+                   $sql="INSERT INTO users(name,username,email,password,phonenumber,experience,birthday,male,female,instructor,student)
+                   VALUES('$name','$username','$email','$password','$phonenumber','$birthday','$experience,'$male','$female','$instructor','$student')";
                    mysqli_query($db, $sql);
                   $_SESSION['email']=$email;
                   $_SESSION['success']="You are now logged in";
@@ -145,35 +136,6 @@ and open the template in the editor.
                    header('location:login.php');
                }
               
-        
         ?>
     </body>
 </html>
-=======
-               $experience= mysql_real_escape_string($_POST['birthday']);
-               $male = mysql_real_escape_string($_POST['male']);
-               $female = mysql_real_escape_string($_POST['female']);
-               $instructor = mysql_real_escape_string($_POST['instructor']);
-               $student = mysql_real_escape_string($_POST['student']);*/
-            
-            
-              $name = $_POST['name'];
-              $username = $_POST['username'];
-              $email = $_POST['email'];
-              $password = $_POST['password'];
-               //$repassword =$_POST['repassword'];
-               $phonenumber = $_POST['phonenumber'];
-               $birthday = $_POST['birthday'];
-               //$experience= $_POST['experience'];
-               $kind = $_POST['kind'];
-               $job = $_POST['job'];
-            
-                $sql="INSERT INTO `users` (id ,name,username,email,password,phonenumber,birthday,kind,job)
-                                 VALUES(3 ,'".$name."','".$username."','".$email."','".$password."','".$phonenumber."','".$birthday."','".$kind."','".$job."') ";
-              $result= mysqli_query($conn, $sql);
-              if($result){
-            header('location: login.php');
-        }
-        }
-        ?>
->>>>>>> 45c19a2c2aa1a7c38cde39ca87e15e4d46016414
