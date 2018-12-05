@@ -1,8 +1,17 @@
 <?php
     include '../classes/visitor.php';
+    include '../classes/Enc_Dec.php';
     $vis=new visitor;
+    $enc=new Enc_Dec;
     if(isset($_POST['submit'])){
-        if($vis->sendMessage('name', 'email', 'message')){
+        $Name = 'key:'.$_POST['name'];
+        $Email = 'key:'.$_POST['email'];
+        $Message = 'key:'.$_POST['message'];
+        $encName = $enc->encryption($Name);
+        $encEmail =  $enc->encryption($Email);
+        $encMessage =  $enc->encryption($Message);
+        echo '_________'.$encName."_________".$encEmail;
+        if($vis->sendMessage($encName,$encEmail,$encMessage)){
             echo 'success';
         }
     }
@@ -107,7 +116,7 @@
 
 								<!-- Hamburger -->
 
-								<div class="user"><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></div>
+								<div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
 								<div class="hamburger menu_mm">
 									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
 								</div>

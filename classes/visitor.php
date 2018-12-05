@@ -17,9 +17,9 @@ class visitor{
     public function sendMessage($name,$email,$message){
         $data= new Connection;
         $ins= array(
-        'visitor_name'=> mysqli_real_escape_string($data->conn,$_POST[$name]),
-        'email'=> mysqli_real_escape_string($data->conn,$_POST[$email]),
-        'message'=> mysqli_real_escape_string($data->conn,$_POST[$message])
+        'visitor_name'=> mysqli_real_escape_string($data->conn,$name),
+        'email'=> mysqli_real_escape_string($data->conn,$email),
+        'message'=> mysqli_real_escape_string($data->conn,$message)
         );
         if($data->InsertInfo('contact',$ins)){
             return TRUE;
