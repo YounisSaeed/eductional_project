@@ -14,6 +14,16 @@
         }
     }
 ?>
+<?php  
+ //login.php  
+ session_start();  
+ if(isset($_POST["submit"]))  
+ {  
+      $_SESSION["name"] = $_POST["username"];  
+      $_SESSION['last_login_timestamp'] = time();  
+      header("location:index.php");       
+ }  
+ ?>  
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.

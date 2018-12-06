@@ -15,7 +15,21 @@
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 </head>
 <body>
-
+<?php  
+      session_start();  
+      if(isset($_SESSION["name"]))  
+      {  
+           if((time() - $_SESSION['last_login_timestamp']) > 60) // 900 = 15 * 60  
+           {  
+                header("location:logout.php");  
+           }  
+           
+      }  
+      else  
+      {  
+           header('location:login.php');  
+      }  
+      ?>  
 <div class="super_container">
 
 	<!-- Header -->
