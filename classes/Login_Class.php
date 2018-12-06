@@ -17,6 +17,7 @@ class Login {
         $data = new Connection;
         $qu="SELECT email,password FROM users WHERE email='".$username."' AND password='".$password."'";
         $result= mysqli_query($data->conn, $qu);
+        
         if($row = mysqli_fetch_assoc($result)){
             return true;
         }

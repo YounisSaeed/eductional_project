@@ -11,11 +11,7 @@ body
 .createbox
 {
     width: 450px;
-<<<<<<< HEAD
     height: 540px;
-=======
-    height: 620px;
->>>>>>> 45c19a2c2aa1a7c38cde39ca87e15e4d46016414
     padding: 40px;
     padding-top: 0px;
     margin-top: 120px;
@@ -51,14 +47,6 @@ body
     margin-top: 20px;
     color: #fff;
 }
-<<<<<<< HEAD
-=======
-.exper
-{
-  margin-top: 20px;
-    color: #fff;  
-}
->>>>>>> 45c19a2c2aa1a7c38cde39ca87e15e4d46016414
 
 .emaild input
 {
@@ -73,11 +61,8 @@ body
 
 }
 
-<<<<<<< HEAD
+
 .passnumd, .repassbirthd
-=======
-.passnumd, .repassbirthd 
->>>>>>> 45c19a2c2aa1a7c38cde39ca87e15e4d46016414
 {
     margin-top: 20px;
     color: #FFF;
@@ -88,12 +73,7 @@ body
 {
     float: right;
 }
-
-<<<<<<< HEAD
-.named input, .unamed input, .passnumd input, .repassbirthd input
-=======
 .named input, .unamed input, .passnumd input, .repassbirthd input ,.exper input
->>>>>>> 45c19a2c2aa1a7c38cde39ca87e15e4d46016414
 {
     background: none;
     width: 200px;
@@ -145,12 +125,7 @@ body
     font-size: 15px;
     margin-top: 40px;
 }
-
-<<<<<<< HEAD
 .sub
-=======
-.submit
->>>>>>> 45c19a2c2aa1a7c38cde39ca87e15e4d46016414
 {
     background: rgba(255,255,255,1);
     color: #000;
@@ -163,11 +138,7 @@ body
     transition: 0.5s;
 }
 
-<<<<<<< HEAD
 .sub:hover
-=======
-.submit:hover
->>>>>>> 45c19a2c2aa1a7c38cde39ca87e15e4d46016414
 {
     background: none;
     border: 2px solid rgba(255,255,255,1);

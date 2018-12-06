@@ -4,14 +4,13 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<<<<<<< HEAD
 <html>
     <head>
         <meta charset="UTF-8">
         <title></title>
     </head>
     <body>
-        <?php
+        <?php/*
         session_start();
        $username="";
         $email="";
@@ -22,8 +21,8 @@ and open the template in the editor.
         if(isset($_POST['Registeration'])){
             $name = mysql_real_escape_string($_POST['username']);
             $username = mysql_real_escape_string($_POST['username']);
-=======
-        <?php
+
+        
         $host="127.0.0.1";
          $username="root";
        // $email="";
@@ -48,7 +47,7 @@ and open the template in the editor.
                if(empty($username))
                {
                    array_push($errors,"Username is required");
-                    
+        
                }
                 if(empty($email))
                {
@@ -146,17 +145,17 @@ and open the template in the editor.
                }
               
         
-        ?>
+        ?>*/
     </body>
 </html>
-=======
+
                $experience= mysql_real_escape_string($_POST['birthday']);
                $male = mysql_real_escape_string($_POST['male']);
                $female = mysql_real_escape_string($_POST['female']);
                $instructor = mysql_real_escape_string($_POST['instructor']);
                $student = mysql_real_escape_string($_POST['student']);*/
             
-            
+            /*
               $name = $_POST['name'];
               $username = $_POST['username'];
               $email = $_POST['email'];
@@ -175,5 +174,4 @@ and open the template in the editor.
             header('location: login.php');
         }
         }
-        ?>
->>>>>>> 45c19a2c2aa1a7c38cde39ca87e15e4d46016414
+        
