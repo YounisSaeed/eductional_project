@@ -15,21 +15,7 @@
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 </head>
 <body>
-<?php  
-      session_start();  
-      if(isset($_SESSION["name"]))  
-      {  
-           if((time() - $_SESSION['last_login_timestamp']) > 60) // 900 = 15 * 60  
-           {  
-                header("location:logout.php");  
-           }  
-           
-      }  
-      else  
-      {  
-           header('location:login.php');  
-      }  
-      ?>  
+
 <div class="super_container">
 
 	<!-- Header -->
@@ -756,3 +742,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="js/custom.js"></script>
 </body>
 </html>
+<script>  
+ $(document).ready(function(){  
+       function check_session()
+       {
+          $.ajax({
+            url:"check_session.php",
+            method:"POST",
+            success:function(data)
+            {
+              if(data == '1')
+              {
+                alert('Your session has been expired!');  
+                window.location.href="login.php";
+              }
+            }
+          })
+       }
+        setInterval(function(){
+          check_session();
+        }, 10000);  //10000 means 10 seconds
+ });  
+ </script>
