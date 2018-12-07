@@ -1,13 +1,14 @@
 <?php
     //include ('source.php');
-    include ('../classes/User.php');
-    $usr=new User;
-    if(isset($_POST['submit'])){
-        if($usr->AddUser('name','username','password','email','number','birthday','kind','job')){
-            header("Location: login.php");
-        }
-    }
-    ?>
+//    include ('../classes/User.php');
+//    $usr=new User;
+//    if(isset($_POST['submit'])){
+//        if($usr->AddUser('name','username','password','email','number','birthday','kind','job')){
+//            header("Location: login.php");
+//        }
+//    }
+require_once 'file_add_user.php';
+ ?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.

@@ -9,7 +9,7 @@
             header("Location: index.php");
         }
         else{
-            echo "<script>alert('invalid email or password');</script>";
+            echo "<script>alert('invalid email or password') ;</script>";
             //header("Location: login.php");
         }
     }
