@@ -26,7 +26,7 @@ class User {
         'id'=> mysqli_real_escape_string($data->conn,$flag),
         'name'=> mysqli_real_escape_string($data->conn,$_POST[$name]),
         'username'=> mysqli_real_escape_string($data->conn,$_POST[$usrname]),
-        'password'=> mysqli_real_escape_string($data->conn,$_POST[$pass]),
+        'password'=> mysqli_real_escape_string($data->conn,$pass),
         'email'=> mysqli_real_escape_string($data->conn,$_POST[$email]),
         'phone'=> mysqli_real_escape_string($data->conn,$_POST[$phone]),
         'u_date'=> mysqli_real_escape_string($data->conn,$_POST[$date]),

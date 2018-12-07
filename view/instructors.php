@@ -219,8 +219,8 @@ $con= mysqli_connect("localhost", "root", "", "educational");
                                      <?php if( $x[0] == "yes"  ) :?>
                                     <form class="section_title text-center" enctype="multipart/form-data"
                                         action="<?php print $_SERVER['PHP_SELF']?>" method="post">
-                                <p><input  type="hidden" name="MAX_FILE_SIZE" value="20000000000" /> <input
-                                        accept=""type="file" name="pdfFile" /><br />
+                                <p><input  type="hidden" name="MAX_FILE_SIZE" value="20000000000" />
+                                    <input accept=""type="file" name="pdfFile" /><br />
                                     <br />
                                     <input   type="submit" value="upload!" /></p>
                                     </form>
