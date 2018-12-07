@@ -1,19 +1,23 @@
 <?php 
     include ('../classes/Login_Class.php');
     $log=new Login;
+    session_start();
     if(isset($_POST['submit'])){
         $u_name= $_POST['username'];
         $u_pass= $_POST['password'];
         if($log->validation($u_name,$u_pass))
         {
+            $_SESSION["name"] = $_POST["name"];
             header("Location: index.php");
         }
         else{
             echo "<script>alert('invalid email or password') ;</script>";
             //header("Location: login.php");
         }
+        
     }
 ?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
