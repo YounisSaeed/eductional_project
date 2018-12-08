@@ -1,4 +1,6 @@
 <?php 
+    include 'init.php';
+    
     include ('../classes/Login_Class.php');
     $log=new Login;
     session_start();
