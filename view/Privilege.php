@@ -19,6 +19,10 @@ if($result)
  }
 } 
 
+<<<<<<< HEAD
+=======
+   
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
 
 else if(isset($_POST["add"])){
     
@@ -88,7 +92,7 @@ for ($i=0; $i<sizeof($state); $i++)
 else if(isset($_POST["done"])){
     
 $upload = $_POST["upload"];
-$sql= "update `privilage` set upload = '$upload' where usr_id=2 ";
+$sql= "update `privilage` set upload = '$upload' where usr_id=3 ";
 $result = mysqli_query($conn, $sql);
 if($result)
 {

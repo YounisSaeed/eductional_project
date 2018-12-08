@@ -1,6 +1,10 @@
 <?php
     session_start();
+<<<<<<< HEAD
     include_once 'connection.php';
+=======
+    //include_once 'connection.php';
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
 ?>
 
 
@@ -87,13 +91,22 @@
 							<nav class="main_nav_contaner">
 								<ul class="main_nav">
                                                                     <?php
+<<<<<<< HEAD
+=======
+                                                                    include '../database/Connection.php';
+                                                                        $data=new Connection();
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
                                                                         if(isset($_SESSION['user']))
                                                                         {
                                                                             $sess_count = count($_SESSION);
                                                                             for($i = 1 ; $i <= $sess_count - 2 ; $i++)
                                                                             {
                                                                                 $sql_pname = "select page_url_header,page_name from `urls` where page_id = '".$_SESSION['page'.$i]."'";
+<<<<<<< HEAD
                                                                                 $result_pname = mysqli_query($conn, $sql_pname);
+=======
+                                                                                $result_pname = mysqli_query($data->conn, $sql_pname);
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
                                                                                 $array_unpage = array();
                                                                                 if($result_pname){
                                                                                     while ($row_n = mysqli_fetch_array($result_pname)){
@@ -780,3 +793,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="js/custom.js"></script>
 </body>
 </html>
+<script>  
+ $(document).ready(function(){  
+       function check_session()
+       {
+          $.ajax({
+            url:"check_session.php",
+            method:"POST",
+            success:function(data)
+            {
+              if(data == '1')
+              {
+                alert('Your session has been expired!');  
+                window.location.href="login.php";
+              }
+            }
+          })
+       }
+        setInterval(function(){
+          check_session();
+        }, 10000);  //10000 means 10 seconds
+ });  
+ </script>

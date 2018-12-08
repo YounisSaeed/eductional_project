@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
     session_start();
 include 'connection.php';
 //    include '../classes/visitor.php';
@@ -8,6 +9,27 @@ include 'connection.php';
 //            echo 'success';
 //        }
 //    }
+=======
+
+    session_start();
+    include 'connection.php';
+    include '../classes/visitor.php';
+    include '../classes/Enc_Dec.php';
+    $vis=new visitor;
+    $enc=new Enc_Dec;
+    if(isset($_POST['submit'])){
+        $Name = 'key:'.$_POST['name'];
+        $Email = 'key:'.$_POST['email'];
+        $Message = 'key:'.$_POST['message'];
+        $encName = $enc->encryption($Name);
+        $encEmail =  $enc->encryption($Email);
+        $encMessage =  $enc->encryption($Message);
+        echo '_________'.$encName."_________".$encEmail;
+        if($vis->sendMessage($encName,$encEmail,$encMessage)){
+            echo 'success';
+        }
+    }
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -133,6 +155,10 @@ include 'connection.php';
 
 								<!-- Hamburger -->
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
 								<?php
                                                                     if(isset($_SESSION['user'])){
                                                                         echo '<div class="user_log"><a href="logout.php" class="a_log">Logout</a></div>
@@ -145,6 +171,15 @@ include 'connection.php';
                                                                               </div>';
                                                                     }
                                                                 ?>
+<<<<<<< HEAD
+=======
+=======
+								<div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
+								<div class="hamburger menu_mm">
+									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+								</div>
+>>>>>>> 995a18aabf13116de4446bf7929a12d0a23affbb
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
 							</div>
 
 						</div>

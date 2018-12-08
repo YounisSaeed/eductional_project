@@ -35,7 +35,7 @@ class Connection {
         $this->conn= mysqli_connect("127.0.0.1", "root", "", "educational");
         if(! $this->conn){
             echo 'database connection failed'. mysqli_connect_error($this->conn);
-        }else            echo 'Success !!';
+        }//else            echo 'Success !!';
     }
     
     

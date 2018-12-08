@@ -160,10 +160,9 @@
 		</div>
 
 	</header>
- 
  <div class="privlege">
      <form method="post" action='Privilege.php'>
-             <select name="usertype" id="usertype" value="usertype" required>
+             <select name="usertype" id="usertype" value="usertype">
                 
                 <option> -- Select Usertype -- </option>
                  <?php while($row1 = mysqli_fetch_array($result)):;?>
@@ -175,16 +174,9 @@
                </select>
                
                <div class="check">
-                  <input type="checkbox" id = "pagename" value="Home" name="pagename[]" > Home
-                  <input type="checkbox" id = "pagename" value="Courses" name="pagename[]" > Courses
-                  <input type="checkbox" id = "pagename" value="Single_Courses" name="pagename[]" > Single_Courses
-
-                  <input type="checkbox" id = "pagename" value="Blog" name="pagename[]" > Blog <br> <br>
-                  <input type="checkbox" id = "pagename" value="Single_Blog" name="pagename[]" style="margin-left:75px;"> Single_Blog
-                  
-                  <input type="checkbox" id = "pagename" value="Contact" name="pagename[]" > Contact 
-                  <input type="checkbox" id = "pagename" value="Instructors" name="pagename[]" > Instructors <br><br>
-                  <input type="checkbox" id = "pagename" value="Adminstrator" name="pagename[]" style="margin-left:180px;"> Adminstrator 
+                  <input type="checkbox" id = "pagename" value="pageName_1" name="pagename"> Home
+                  <input type="checkbox" id = "pagename" value="pageName_2" name="pagename"> Courses
+                  <input type="checkbox" id = "pagename" value="pageName_3" name="pagename"> Instructor
                </div>
                
                <button name="submit"> Submit</button>
@@ -196,109 +188,22 @@
   <div class="admin">
       <p> Create New Admin </p>
      <form method="post" action='Privilege.php'>
-         <input type ="text" name="f_name" placeholder="Name" required> <br>
-          <input type ="text" name="username" placeholder="user name" required> <br>
-          <input type ="text" name="password" placeholder="password" required> <br>
-          <input type ="email" name="email" placeholder="E_mail" required> <br>
-          <input type ="text" name="phone" placeholder="phone" required> <br>
-          <input type ="date" name="date" placeholder="date" required> <br> <br>
+          <input type ="text" name="f_name" placeholder="Name"> <br>
+          <input type ="text" name="username" placeholder="user name"> <br>
+          <input type ="text" name="password" placeholder="password"> <br>
+          <input type ="email" name="email" placeholder="E_mail"> <br>
+          <input type ="text" name="phone" placeholder="phone"> <br>
+          <input type ="date" name="date" placeholder="date"> <br> <br>
           Gender :
-          <input type ="radio" name="gender" value="male" > Male
-          <input type ="radio" name="gender" value="female" > Female
+          <input type ="radio" name="gender" value="male"> Male
+          <input type ="radio" name="gender" value="female"> Female
           <button name="add"> Add </button>
           
       </from>
-  </div>       
+  </div>
         
         
-	<footer class="footer">
-		<div class="footer_body">
-			<div class="container">
-				<div class="row">
-
-					<!-- Newsletter -->
-					<div class="col-lg-3 footer_col">
-						<div class="newsletter_container d-flex flex-column align-items-start justify-content-end">
-							<div class="footer_logo mb-auto"><a href="#">Lingua</a></div>
-							<div class="footer_title">Subscribe</div>
-							<form action="#" id="newsletter_form" class="newsletter_form">
-								<input type="email" class="newsletter_input" placeholder="Email" required="required">
-								<button class="newsletter_button"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-							</form>
-						</div>
-					</div>
-
-					<!-- About -->
-					<div class="col-lg-2 offset-lg-3 footer_col">
-						<div>
-							<div class="footer_title">About Us</div>
-							<ul class="footer_list">
-								<li><a href="#">Courses</a></li>
-								<li><a href="#">Team</a></li>
-								<li><a href="#">Brand Guidelines</a></li>
-								<li><a href="#">Jobs</a></li>
-								<li><a href="#">Advertise with us</a></li>
-								<li><a href="#">Press</a></li>
-								<li><a href="#">Contact us</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<!-- Help & Support -->
-					<div class="col-lg-2 footer_col">
-						<div class="footer_title">Help & Support</div>
-						<ul class="footer_list">
-							<li><a href="#">Discussions</a></li>
-							<li><a href="#">Troubleshooting</a></li>
-							<li><a href="#">Duolingo FAQs</a></li>
-							<li><a href="#">Schools FAQs</a></li>
-							<li><a href="#">Duolingo English Test FAQs</a></li>
-							<li><a href="#">Status</a></li>
-						</ul>
-					</div>
-
-					<!-- Privacy -->
-					<div class="col-lg-2 footer_col clearfix">
-						<div>
-							<div class="footer_title">Privacy & Terms</div>
-							<ul class="footer_list">
-								<li><a href="#">Community Guidelines</a></li>
-								<li><a href="#">Terms</a></li>
-								<li><a href="#">Brand Guidelines</a></li>
-								<li><a href="#">Privacy</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<div class="copyright">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<div class="copyright_content d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
-							<div class="cr"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-							<div class="cr_right ml-md-auto">
-								<div class="footer_phone"><span class="cr_title">phone:</span>+44 300 303 0266</div>
-								<div class="footer_social">
-									<span class="cr_social_title">follow us</span>
-									<ul>
-										<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-										<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-										<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-
+        
         
         
         

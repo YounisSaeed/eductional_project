@@ -195,7 +195,11 @@
         
        <div class="ins">
             <form action="Privilege.php" method="post">
+<<<<<<< HEAD
                 <P style="color: #fff">Instructor Privillege :</P>
+=======
+                <P>Instructor Privilege :</P>
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
                 <div class="radio">
                     <input type="radio" name="upload" value="yes" > yes
                     <input type="radio" name="upload" value="no" >  NO 

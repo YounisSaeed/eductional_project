@@ -10,6 +10,7 @@ body
     height:600px;
     background-image:url(../images/pexels-photo-374006.jpeg);
 }
+<<<<<<< HEAD
 .check 
 {
     margin-left: 460px;
@@ -20,6 +21,16 @@ body
     color :#000;
     padding-left: 450px;
     padding-top: 0px;
+=======
+ins 
+{
+    margin-top: -20;
+}
+.ins p
+{
+    color :#000;
+    padding-left: 450px;    
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
 }
 .radio
 {
