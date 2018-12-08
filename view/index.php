@@ -1,3 +1,13 @@
+<?php
+    session_start();
+<<<<<<< HEAD
+    include_once 'connection.php';
+=======
+    //include_once 'connection.php';
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +77,7 @@
 			</div>				
 		</div>
 
-		<!-- Header Content -->
+		<!-- ************************************************Header Content************************************************** -->
 		<div class="header_container">
 			<div class="container">
 				<div class="row">
@@ -80,12 +90,45 @@
 							</div>
 							<nav class="main_nav_contaner">
 								<ul class="main_nav">
-									<li class="active"><a href="index.php">Home</a></li>
+                                                                    <?php
+<<<<<<< HEAD
+=======
+                                                                    include '../database/Connection.php';
+                                                                        $data=new Connection();
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
+                                                                        if(isset($_SESSION['user']))
+                                                                        {
+                                                                            $sess_count = count($_SESSION);
+                                                                            for($i = 1 ; $i <= $sess_count - 2 ; $i++)
+                                                                            {
+                                                                                $sql_pname = "select page_url_header,page_name from `urls` where page_id = '".$_SESSION['page'.$i]."'";
+<<<<<<< HEAD
+                                                                                $result_pname = mysqli_query($conn, $sql_pname);
+=======
+                                                                                $result_pname = mysqli_query($data->conn, $sql_pname);
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
+                                                                                $array_unpage = array();
+                                                                                if($result_pname){
+                                                                                    while ($row_n = mysqli_fetch_array($result_pname)){
+                                                                                        if($row_n['page_name'] != 'Single_Blog' && $row_n['page_name'] != 'Single_Courses'){
+                                                                                            echo '<li><a href="'.$row_n['page_url_header'].'">'.$row_n['page_name'].'</a></li>';
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        } else {
+                                                                            echo '<li><a href="index.php">Home</a></li>';
+                                                                            echo '<li><a href="courses.php">Courses</a></li>';
+                                                                            echo '<li><a href="contact.php">Contact</a></li>';
+                                                                            echo '<li><a href="blog.php">Blog</a></li>';
+                                                                        }
+                                                                    ?>
+<!--									<li class="active"><a href="index.php">Home</a></li>
 									<li><a href="courses.php">Courses</a></li>
 									<li><a href="instructors.php">Instructors</a></li>
-									<!--<li><a href="#">Events</a></li>-->
+									<li><a href="#">Events</a></li>
 									<li><a href="blog.php">Blog</a></li>
-									<li><a href="contact.php">Contact</a></li>
+									<li><a href="contact.php">Contact</a></li>-->
 								</ul>
 							</nav>
 							<div class="header_content_right ml-auto text-right">
@@ -101,13 +144,21 @@
 								</div>
 
 								<!-- Hamburger -->
+                                                                <?php
+                                                                    if(isset($_SESSION['user'])){
+                                                                        echo '<div class="user_log"><a href="logout.php" class="a_log">Logout</a></div>
+                                                                              ';
+                                                                    }
+                                                                    else {
+                                                                        echo '<div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
+                                                                              <div class="hamburger menu_mm">
+                                                                              <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+                                                                              </div>';
+                                                                    }
+                                                                ?>
 
-								<div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
-								<div class="hamburger menu_mm">
-									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
-								</div>
 							</div>
-
+.3
 						</div>
 					</div>
 				</div>

@@ -1,4 +1,6 @@
 <?php 
+    include 'init.php';
+    
     include ('../classes/Login_Class.php');
     $log=new Login;
     session_start();
@@ -8,7 +10,7 @@
         if($log->validation($u_name,$u_pass))
         {
             $_SESSION["name"] = $_POST["name"];
-            header("Location: index.php");
+            //header("Location: check.php");
         }
         else{
             echo "<script>alert('invalid email or password') ;</script>";
@@ -27,24 +29,49 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        
+        <meta http-equiv="cache-control" content="private, max-age=0, no-cache">
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="expires" content="0">
         <title>Education system</title>
+<<<<<<< HEAD
+        <link rel="stylesheet" href="login.css"/>
+=======
         <link rel="stylesheet" href="styles/login.css"/>
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
+        <script type="text/javascript">
+            function noBack(){window.history.forward()}
+            noBack();
+            window.onload=noBack;
+            window.onpageshow=function(evt){if(evt.persisted)noBack()}
+            window.onunload=function(){void(0)}
+<<<<<<< HEAD
+        </script>
         
+=======
+        </script>        
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
     </head>
     <body>
         <div class="box">
             <h2>Login</h2>
-
-            <form method="POST">
+<<<<<<< HEAD
+            <form action="check.php" method="POST">
+                <label>E-mail:</label><br/>
+                <input type="text" name="useremail" placeholder="Enter your E-mail"><br/>
+                <label>Password:</label><br/>
+                <input type="password" name="password" placeholder="Enter your password"><br/>
+                <input type="submit" value="Submit" name="login" class="button">
+=======
+            <form method="POST" action="check.php">
                 <!-- display validation errors here -->
                <?php include ('errors.php');?>
                 <label>E-mail:</label><br/>
-                <input type="text" name="username" placeholder="Enter your E-mail" required=""><br/>
+                <input type="text" name="useremail" placeholder="Enter your E-mail" required=""><br/>
                 <label>Password:</label><br/>
                 <input type="password" name="password" placeholder="Enter your password" required=""><br/>
                 
                 <input type="submit" name="submit" value="submit" class="button">
+>>>>>>> 2f07de5432d77f3e4d34cfc646868a5f398871ac
             </form>
                <!-- <a href="forgetpass.php" class="forget"><p>Forget  your password?</p></a><br/>-->
             
