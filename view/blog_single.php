@@ -132,6 +132,7 @@
 
 								<!-- Hamburger -->
 
+<<<<<<< HEAD
 								<?php
                                                                     if(isset($_SESSION['user'])){
                                                                         echo '<div class="user_log"><a href="logout.php" class="a_log">Logout</a></div>
@@ -144,6 +145,12 @@
                                                                               </div>';
                                                                     }
                                                                 ?>
+=======
+								<div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
+								<div class="hamburger menu_mm">
+									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+								</div>
+>>>>>>> 995a18aabf13116de4446bf7929a12d0a23affbb
 							</div>
 
 						</div>
@@ -303,7 +310,7 @@
 				</div>
 			</div>
 
-			<div class="row register">
+			<!--<div class="row register">
 				<div class="col-lg-6 offset-lg-3">
 					<div class="register_form_title">Post a Comment</div>
 					<div class="register_form_container">
@@ -327,7 +334,7 @@
 				</div>
 			</div>
 
-			<div class="row comments">
+			<!--<div class="row comments">
 				<div class="col-lg-6 offset-lg-3">
 					<div class="comments_title">Comments <span>(12)</span></div>
 					<div class="comments_container">
@@ -385,7 +392,7 @@
 			</div>
 		</div>
 	</div>
-
+-->
 	<!-- Footer -->
 
 	<footer class="footer">

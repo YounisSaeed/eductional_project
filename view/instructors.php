@@ -24,10 +24,11 @@
 <body>
 <?php
 $con= mysqli_connect("localhost", "root", "", "educational");
+<<<<<<< HEAD
             if ( isset( $_FILES['pdfFile'] ) ) {
 	if ($_FILES['pdfFile']['type'] == "application/pdf") {
 		$source_file = $_FILES['pdfFile']['tmp_name'];
-		$dest_file = "upload/".$_FILES['pdfFile']['name'];
+		$dest_file = "../Uploaded_Courses/".$_FILES['pdfFile']['name'];
                 $Size=$_FILES['pdfFile']['size']/1000;
                 ////
                 $allowedExtension= array("pdf");
@@ -43,12 +44,15 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 		else {
 			/*move_uploaded_file( $source_file, $dest_file )
 			or die ("Error!!");*/
+                    $file = $_FILES["pdfFile"];
+                    move_uploaded_file($file["tmp_name"], "../Uploaded_Courses/" . $file["name"]);
+
 			if($_FILES['pdfFile']['error'] == 0) {
 				print "Pdf file uploaded successfully!";
 				print "<b><u>Details : </u></b><br/>";
 				echo $pdffile;
 				print "File Size : ".$_FILES['pdfFile']['size']." bytes"."<br/>";
-				print "File location : upload/".$_FILES['pdfFile']['name']."<br/>";
+				print "File location : ../Uploaded_Courses/".$_FILES['pdfFile']['name']."<br/>";
                                 $sql= "insert into file_upload 
                         (description,file_name,size)
                         VALUES('$dest_file','$pdffile','$Size') ";
@@ -62,10 +66,21 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 			print "Invalid  file extension, should be pdf !!"."<br/>";
 			print "Error Code : ".$_FILES['pdfFile']['error']."<br/>";
 		}
-	}
+                }
+=======
+        if(isset($_POST['btn_upload'])){
+           $filetmp = $_FILES["file"]["tmp_name"];
+	$filename = $_FILES["file"]["name"];
+	$filetype = $_FILES["file"]["type"];
+	$filepath = "saved/".$filename;
+	move_uploaded_file($filetmp,$filepath);
+	$sql = "INSERT INTO file_upload (file_name,upload_on,status) VALUES ('$filename','$filepath','$filetype')";
+	mysqli_query($con, $sql);
+>>>>>>> 8f5f442c65fe60e77941626a17c3a103d8a1373b
 }
-        realpath(dirname(getcwd()))
-        ?>
+
+
+    ?>
 <div class="super_container">
 
 	<!-- Header -->
@@ -175,6 +190,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 
 								<!-- Hamburger -->
 
+<<<<<<< HEAD
 								<?php
                                                                     if(isset($_SESSION['user'])){
                                                                         echo '<div class="user_log"><a href="logout.php" class="a_log">Logout</a></div>
@@ -187,6 +203,12 @@ $con= mysqli_connect("localhost", "root", "", "educational");
                                                                               </div>';
                                                                     }
                                                                 ?>
+=======
+								<div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
+								<div class="hamburger menu_mm">
+									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+								</div>
+>>>>>>> 995a18aabf13116de4446bf7929a12d0a23affbb
 							</div>
 
 						</div>
@@ -249,18 +271,17 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 							</div>
 							</div>
 						</div>
+
+                                    
                                     <?php
-                                        $sql = "Select upload from `privilage` where usr_id= 2" ;
+                                        $sql = "Select upload from `privilage` where usr_id= 3" ;
                                         $result = mysqli_query($con,$sql);
                                         $x = mysqli_fetch_array($result);
                                     ?>
                                      <?php if( $x[0] == "yes"  ) :?>
-                                    <form class="section_title text-center" enctype="multipart/form-data"
-                                        action="<?php print $_SERVER['PHP_SELF']?>" method="post">
-                                <p><input  type="hidden" name="MAX_FILE_SIZE" value="20000000000" /> <input
-                                        accept=""type="file" name="pdfFile" /><br />
-                                    <br />
-                                    <input   type="submit" value="upload!" /></p>
+                                    <form method="POST" enctype="multipart/form-data" action="">
+                                            <input type="file" name="file">
+                                            <input type="submit" value="Upload" name ="btn_upload"> 
                                     </form>
                                     <?php endif ;?>
 						<div class="instructor_title">AI</div>

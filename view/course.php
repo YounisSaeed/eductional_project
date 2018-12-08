@@ -131,6 +131,7 @@
 
 								<!-- Hamburger -->
 
+<<<<<<< HEAD
 								<?php
                                                                     if(isset($_SESSION['user'])){
                                                                         echo '<div class="user_log"><a href="logout.php" class="a_log">Logout</a></div>
@@ -143,6 +144,12 @@
                                                                               </div>';
                                                                     }
                                                                 ?>
+=======
+								<div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
+								<div class="hamburger menu_mm">
+									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+								</div>
+>>>>>>> 995a18aabf13116de4446bf7929a12d0a23affbb
 							</div>
 
 						</div>
@@ -348,7 +355,9 @@
 										<div class="accordion_container">
 											<div class="accordion d-flex flex-row align-items-center active"><div>Can I just enroll in a single course? I'm not interested in the entire Specializat</div></div>
 											<div class="accordion_panel">
-												<p>Nam egestas lorem ex, sit amet commodo tortor faucibus a. Suspendisse commodo, turpis a dapibus fermentum, turpis ipsum rhoncus massa, sed commodo nisi lectus id ipsum. Sed nec elit vehicula, aliquam neque euismod, porttitor ex. Nam consequat iaculis maximus.</p>
+                                                                                            <a href="saved/.pdf" download>
+        DOWNLOADS
+</a>	
 											</div>
 										</div>
 

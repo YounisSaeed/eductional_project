@@ -131,6 +131,7 @@
 
 								<!-- Hamburger -->
 
+<<<<<<< HEAD
 								<?php
                                                                     if(isset($_SESSION['user'])){
                                                                         echo '<div class="user_log"><a href="logout.php" class="a_log">Logout</a></div>
@@ -143,6 +144,12 @@
                                                                               </div>';
                                                                     }
                                                                 ?>
+=======
+                                                                <div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
+								<div class="hamburger menu_mm">
+									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+								</div>
+>>>>>>> 995a18aabf13116de4446bf7929a12d0a23affbb
 							</div>
 
 						</div>

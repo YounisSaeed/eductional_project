@@ -131,6 +131,7 @@
 
 								<!-- Hamburger -->
 
+<<<<<<< HEAD
 								<?php
                                                                     if(isset($_SESSION['user'])){
                                                                         echo '<div class="user_log"><a href="logout.php" class="a_log">Logout</a></div>
@@ -143,6 +144,12 @@
                                                                               </div>';
                                                                     }
                                                                 ?>
+=======
+								<div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
+								<div class="hamburger menu_mm">
+									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+								</div>
+>>>>>>> 995a18aabf13116de4446bf7929a12d0a23affbb
 							</div>
 
 						</div>
@@ -207,7 +214,7 @@
 	</div>
 
 	<!-- Language -->
-
+<!--    
 	<div class="language">
 		<div class="container">
 			<div class="row">
@@ -220,11 +227,11 @@
 					<div class="language_slider_container">
 						
 						<!-- Language Slider -->
-
+<!--
 						<div class="owl-carousel owl-theme language_slider">
 
 							<!-- Flag -->
-							<div class="owl-item language_item">
+<!--							<div class="owl-item language_item">
 								<a href="#">
 									<div class="flag"><img src="images/Ukrainian.svg" alt=""></div>
 									<div class="lang_name">Ukrainian</div>
@@ -232,7 +239,7 @@
 							</div>
 
 							<!-- Flag -->
-							<div class="owl-item language_item">
+<!--							<div class="owl-item language_item">
 								<a href="#">
 									<div class="flag"><img src="images/Japanese.svg" alt=""></div>
 									<div class="lang_name">Japanese</div>
@@ -240,7 +247,7 @@
 							</div>
 
 							<!-- Flag -->
-							<div class="owl-item language_item">
+<!--							<div class="owl-item language_item">
 								<a href="#">
 									<div class="flag"><img src="images/Lithuanian.svg" alt=""></div>
 									<div class="lang_name">Lithuanian</div>
@@ -248,7 +255,7 @@
 							</div>
 
 							<!-- Flag -->
-							<div class="owl-item language_item">
+<!--							<div class="owl-item language_item">
 								<a href="#">
 									<div class="flag"><img src="images/Swedish.svg" alt=""></div>
 									<div class="lang_name">Swedish</div>
@@ -256,7 +263,7 @@
 							</div>
 
 							<!-- Flag -->
-							<div class="owl-item language_item">
+<!--							<div class="owl-item language_item">
 								<a href="#">
 									<div class="flag"><img src="images/English.svg" alt=""></div>
 									<div class="lang_name">English</div>
@@ -264,7 +271,7 @@
 							</div>
 
 							<!-- Flag -->
-							<div class="owl-item language_item">
+<!--							<div class="owl-item language_item">
 								<a href="#">
 									<div class="flag"><img src="images/Italian.svg" alt=""></div>
 									<div class="lang_name">Italian</div>
@@ -272,7 +279,7 @@
 							</div>
 
 							<!-- Flag -->
-							<div class="owl-item language_item">
+<!--							<div class="owl-item language_item">
 								<a href="#">
 									<div class="flag"><img src="images/Chinese.svg" alt=""></div>
 									<div class="lang_name">Chinese</div>
@@ -280,7 +287,7 @@
 							</div>
 
 							<!-- Flag -->
-							<div class="owl-item language_item">
+<!--							<div class="owl-item language_item">
 								<a href="#">
 									<div class="flag"><img src="images/French.svg" alt=""></div>
 									<div class="lang_name">French</div>
@@ -288,7 +295,7 @@
 							</div>
 
 							<!-- Flag -->
-							<div class="owl-item language_item">
+<!--							<div class="owl-item language_item">
 								<a href="#">
 									<div class="flag"><img src="images/German.svg" alt=""></div>
 									<div class="lang_name">German</div>
@@ -304,19 +311,24 @@
 			</div>
 		</div>
 	</div>
-
+-->
 	<!-- Courses -->
 
 	<div class="courses">
 		<div class="container">
 			<div class="row courses_row">
 
-				<!-- Course -->
-				<div class="col-lg-4 course_col">
+                            <?php
+                            include '../database/Connection.php';
+                            $data=new Connection;
+                            $qu="select * from file_upload";
+                            $result= mysqli_query($data->conn, $qu);
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo '<div class="col-lg-4 course_col">
 					<div class="course">
 						<div class="course_image"><img src="images/course_4.jpg" alt=""></div>
 						<div class="course_body">
-							<div class="course_title"><a href="course.php">Vocabulary</a></div>
+							<div class="course_title"><a href="#">'.$row['file_name'].'</a></div>
 							<div class="course_info">
 								<ul>
 									<li><a href="instructors.php">Sarah Parker</a></li>
@@ -330,12 +342,16 @@
 						<div class="course_footer d-flex flex-row align-items-center justify-content-start">
 							<div class="course_students"><i class="fa fa-user" aria-hidden="true"></i><span>10</span></div>
 							<div class="course_rating ml-auto"><i class="fa fa-star" aria-hidden="true"></i><span>4,5</span></div>
-							<div class="course_mark course_free trans_200"><a href="#">Free</a></div>
+							<div class="course_mark course_free trans_200"><a href="'.$row['description'].'">Free</a></div>
 						</div>
 					</div>
-				</div>
-
+				</div>';
+                            }
+                            ?>
 				<!-- Course -->
+				
+
+				<!-- Course 
 				<div class="col-lg-4 course_col">
 					<div class="course">
 						<div class="course_image"><img src="images/course_5.jpg" alt=""></div>
@@ -359,7 +375,7 @@
 					</div>
 				</div>
 
-				<!-- Course -->
+				<!-- Course 
 				<div class="col-lg-4 course_col">
 					<div class="course">
 						<div class="course_image"><img src="images/course_6.jpg" alt=""></div>
@@ -383,7 +399,7 @@
 					</div>
 				</div>
 
-				<!-- Course -->
+				<!-- Course 
 				<div class="col-lg-4 course_col">
 					<div class="course">
 						<div class="course_image"><img src="images/course_7.jpg" alt=""></div>
@@ -407,7 +423,7 @@
 					</div>
 				</div>
 
-				<!-- Course -->
+				<!-- Course 
 				<div class="col-lg-4 course_col">
 					<div class="course">
 						<div class="course_image"><img src="images/course_8.jpg" alt=""></div>
@@ -431,7 +447,7 @@
 					</div>
 				</div>
 
-				<!-- Course -->
+				<!-- Course 
 				<div class="col-lg-4 course_col">
 					<div class="course">
 						<div class="course_image"><img src="images/course_9.jpg" alt=""></div>
@@ -455,7 +471,7 @@
 					</div>
 				</div>
 
-				<!-- Course -->
+				<!-- Course 
 				<div class="col-lg-4 course_col">
 					<div class="course">
 						<div class="course_image"><img src="images/course_10.jpg" alt=""></div>
@@ -479,7 +495,7 @@
 					</div>
 				</div>
 
-				<!-- Course -->
+				<!-- Course 
 				<div class="col-lg-4 course_col">
 					<div class="course">
 						<div class="course_image"><img src="images/course_11.jpg" alt=""></div>
@@ -501,9 +517,9 @@
 							<div class="course_mark course_free trans_200"><a href="#">Free</a></div>
 						</div>
 					</div>
-				</div>
+				</div>-->
 
-				<!-- Course -->
+				<!-- Course 
 				<div class="col-lg-4 course_col">
 					<div class="course">
 						<div class="course_image"><img src="images/course_12.jpg" alt=""></div>
@@ -525,7 +541,7 @@
 							<div class="course_mark trans_200"><a href="#">$45</a></div>
 						</div>
 					</div>
-				</div>
+				</div>-->
 
 			</div>
 

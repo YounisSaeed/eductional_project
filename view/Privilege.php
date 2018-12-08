@@ -57,7 +57,7 @@ if($result)
 else if(isset($_POST["done"])){
     
 $upload = $_POST["upload"];
-$sql= "update `privilage` set upload = '$upload' where usr_id=2 ";
+$sql= "update `privilage` set upload = '$upload' where usr_id=3 ";
 $result = mysqli_query($conn, $sql);
 if($result)
 {
