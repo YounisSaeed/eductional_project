@@ -2,10 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group/>
+=======
         <group>
             <file>file:/C:/xampp/htdocs/eductional_project/view/login.php</file>
             <file>file:/C:/xampp/htdocs/eductional_project/view/init.php</file>
             <file>file:/C:/xampp/htdocs/eductional_project/view/connect.php</file>
         </group>
+>>>>>>> 995a18aabf13116de4446bf7929a12d0a23affbb
     </open-files>
 </project-private>

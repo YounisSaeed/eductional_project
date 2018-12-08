@@ -29,14 +29,35 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        
+        <meta http-equiv="cache-control" content="private, max-age=0, no-cache">
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="expires" content="0">
         <title>Education system</title>
+<<<<<<< HEAD
+        <link rel="stylesheet" href="login.css"/>
+        <script type="text/javascript">
+            function noBack(){window.history.forward()}
+            noBack();
+            window.onload=noBack;
+            window.onpageshow=function(evt){if(evt.persisted)noBack()}
+            window.onunload=function(){void(0)}
+        </script>
+=======
         <link rel="stylesheet" href="styles/login.css"/>
+>>>>>>> 995a18aabf13116de4446bf7929a12d0a23affbb
         
     </head>
     <body>
         <div class="box">
             <h2>Login</h2>
+<<<<<<< HEAD
+            <form action="check.php" method="POST">
+                <label>E-mail:</label><br/>
+                <input type="text" name="useremail" placeholder="Enter your E-mail"><br/>
+                <label>Password:</label><br/>
+                <input type="password" name="password" placeholder="Enter your password"><br/>
+                <input type="submit" value="Submit" name="login" class="button">
+=======
 
             <form method="POST">
                 <!-- display validation errors here -->
@@ -47,6 +68,7 @@ and open the template in the editor.
                 <input type="password" name="password" placeholder="Enter your password" required=""><br/>
                 
                 <input type="submit" name="submit" value="submit" class="button">
+>>>>>>> 995a18aabf13116de4446bf7929a12d0a23affbb
             </form>
                <!-- <a href="forgetpass.php" class="forget"><p>Forget  your password?</p></a><br/>-->
             

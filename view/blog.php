@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include_once 'connection.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,12 +85,36 @@
 							</div>
 							<nav class="main_nav_contaner">
 								<ul class="main_nav">
-									<li><a href="index.php">Home</a></li>
+                                                                    <?php
+                                                                        if(isset($_SESSION['user']))
+                                                                        {
+                                                                            $sess_count = count($_SESSION);
+                                                                            for($i = 1 ; $i <= $sess_count - 2 ; $i++)
+                                                                            {
+                                                                                $sql_pname = "select page_url_header,page_name from `urls` where page_id = '".$_SESSION['page'.$i]."'";
+                                                                                $result_pname = mysqli_query($conn, $sql_pname);
+                                                                                $array_unpage = array();
+                                                                                if($result_pname){
+                                                                                    while ($row_n = mysqli_fetch_array($result_pname)){
+                                                                                        if($row_n['page_name'] != 'Single_Blog' && $row_n['page_name'] != 'Single_Courses'){
+                                                                                            echo '<li><a href="'.$row_n['page_url_header'].'">'.$row_n['page_name'].'</a></li>';
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        } else {
+                                                                            echo '<li><a href="index.php">Home</a></li>';
+                                                                            echo '<li><a href="courses.php">Courses</a></li>';
+                                                                            echo '<li><a href="contact.php">Contact</a></li>';
+                                                                            echo '<li><a href="blog.php">Blog</a></li>';
+                                                                        }
+                                                                    ?>
+<!--									<li><a href="index.php">Home</a></li>
 									<li><a href="courses.php">Courses</a></li>
 									<li><a href="instructors.php">Instructors</a></li>
-									<!--<li><a href="#">Events</a></li>-->
+									<li><a href="#">Events</a></li>
 									<li><a href="blog.php">Blog</a></li>
-									<li><a href="contact.php">Contact</a></li>
+									<li><a href="contact.php">Contact</a></li>-->
 								</ul>
 							</nav>
 							<div class="header_content_right ml-auto text-right">
@@ -102,10 +131,25 @@
 
 								<!-- Hamburger -->
 
+<<<<<<< HEAD
+								<?php
+                                                                    if(isset($_SESSION['user'])){
+                                                                        echo '<div class="user_log"><a href="logout.php" class="a_log">Logout</a></div>
+                                                                              ';
+                                                                    }
+                                                                    else {
+                                                                        echo '<div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
+                                                                              <div class="hamburger menu_mm">
+                                                                              <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+                                                                              </div>';
+                                                                    }
+                                                                ?>
+=======
                                                                 <div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
 								<div class="hamburger menu_mm">
 									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
 								</div>
+>>>>>>> 995a18aabf13116de4446bf7929a12d0a23affbb
 							</div>
 
 						</div>

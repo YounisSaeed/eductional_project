@@ -10,10 +10,14 @@ body
     height:600px;
     background-image:url(../images/pexels-photo-374006.jpeg);
 }
-.ins p{
+ins 
+{
+    margin-top: -20;
+}
+.ins p
+{
     color :#000;
-    padding-left: 450px;
-    padding-top: 40px;
+    padding-left: 450px;    
 }
 .radio
 {

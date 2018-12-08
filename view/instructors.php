@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    include_once 'connection.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +24,50 @@
 <body>
 <?php
 $con= mysqli_connect("localhost", "root", "", "educational");
+<<<<<<< HEAD
+            if ( isset( $_FILES['pdfFile'] ) ) {
+	if ($_FILES['pdfFile']['type'] == "application/pdf") {
+		$source_file = $_FILES['pdfFile']['tmp_name'];
+		$dest_file = "../Uploaded_Courses/".$_FILES['pdfFile']['name'];
+                $Size=$_FILES['pdfFile']['size']/1000;
+                ////
+                $allowedExtension= array("pdf");
+            $pdfExtension = end(explode('.', $dest_file));
+            
+            $pdffile = rand(0,100000). '.' .$pdfExtension;
+                
+            
+                ////
+		if (file_exists($dest_file)) {
+			print "The file name already exists!!";
+		}
+		else {
+			/*move_uploaded_file( $source_file, $dest_file )
+			or die ("Error!!");*/
+                    $file = $_FILES["pdfFile"];
+                    move_uploaded_file($file["tmp_name"], "../Uploaded_Courses/" . $file["name"]);
+
+			if($_FILES['pdfFile']['error'] == 0) {
+				print "Pdf file uploaded successfully!";
+				print "<b><u>Details : </u></b><br/>";
+				echo $pdffile;
+				print "File Size : ".$_FILES['pdfFile']['size']." bytes"."<br/>";
+				print "File location : ../Uploaded_Courses/".$_FILES['pdfFile']['name']."<br/>";
+                                $sql= "insert into file_upload 
+                        (description,file_name,size)
+                        VALUES('$dest_file','$pdffile','$Size') ";
+                mysqli_query($con, $sql);
+			}
+		}
+	}
+	else {
+		if ( $_FILES['pdfFile']['type'] != "application/pdf") {
+			print "Error occured while uploading file : ".$_FILES['pdfFile']['name']."<br/>";
+			print "Invalid  file extension, should be pdf !!"."<br/>";
+			print "Error Code : ".$_FILES['pdfFile']['error']."<br/>";
+		}
+                }
+=======
         if(isset($_POST['btn_upload'])){
            $filetmp = $_FILES["file"]["tmp_name"];
 	$filename = $_FILES["file"]["name"];
@@ -26,6 +76,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 	move_uploaded_file($filetmp,$filepath);
 	$sql = "INSERT INTO file_upload (file_name,upload_on,status) VALUES ('$filename','$filepath','$filetype')";
 	mysqli_query($con, $sql);
+>>>>>>> 8f5f442c65fe60e77941626a17c3a103d8a1373b
 }
 
 
@@ -93,12 +144,36 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 							</div>
 							<nav class="main_nav_contaner">
 								<ul class="main_nav">
-									<li><a href="index.php">Home</a></li>
+                                                                    <?php
+                                                                        if(isset($_SESSION['user']))
+                                                                        {
+                                                                            $sess_count = count($_SESSION);
+                                                                            for($i = 1 ; $i <= $sess_count - 2 ; $i++)
+                                                                            {
+                                                                                $sql_pname = "select page_url_header,page_name from `urls` where page_id = '".$_SESSION['page'.$i]."'";
+                                                                                $result_pname = mysqli_query($conn, $sql_pname);
+                                                                                $array_unpage = array();
+                                                                                if($result_pname){
+                                                                                    while ($row_n = mysqli_fetch_array($result_pname)){
+                                                                                        if($row_n['page_name'] != 'Single_Blog' && $row_n['page_name'] != 'Single_Courses'){
+                                                                                            echo '<li><a href="'.$row_n['page_url_header'].'">'.$row_n['page_name'].'</a></li>';
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        } else {
+                                                                            echo '<li><a href="index.php">Home</a></li>';
+                                                                            echo '<li><a href="courses.php">Courses</a></li>';
+                                                                            echo '<li><a href="contact.php">Contact</a></li>';
+                                                                            echo '<li><a href="blog.php">Blog</a></li>';
+                                                                        }
+                                                                    ?>
+<!--									<li><a href="index.php">Home</a></li>
 									<li><a href="courses.php">Courses</a></li>
 									<li><a href="instructors.php">Instructors</a></li>
-									<!--<li><a href="#">Events</a></li>-->
+									<li><a href="#">Events</a></li>
 									<li><a href="blog.php">Blog</a></li>
-									<li><a href="contact.php">Contact</a></li>
+									<li><a href="contact.php">Contact</a></li>-->
 								</ul>
 							</nav>
 							<div class="header_content_right ml-auto text-right">
@@ -115,10 +190,25 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 
 								<!-- Hamburger -->
 
+<<<<<<< HEAD
+								<?php
+                                                                    if(isset($_SESSION['user'])){
+                                                                        echo '<div class="user_log"><a href="logout.php" class="a_log">Logout</a></div>
+                                                                              ';
+                                                                    }
+                                                                    else {
+                                                                        echo '<div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
+                                                                              <div class="hamburger menu_mm">
+                                                                              <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+                                                                              </div>';
+                                                                    }
+                                                                ?>
+=======
 								<div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
 								<div class="hamburger menu_mm">
 									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
 								</div>
+>>>>>>> 995a18aabf13116de4446bf7929a12d0a23affbb
 							</div>
 
 						</div>
