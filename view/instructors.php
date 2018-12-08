@@ -18,6 +18,7 @@
 <body>
 <?php
 $con= mysqli_connect("localhost", "root", "", "educational");
+<<<<<<< HEAD
             if ( isset( $_FILES['pdfFile'] ) ) {
 	if ($_FILES['pdfFile']['type'] == "application/pdf") {
 		$source_file = $_FILES['pdfFile']['tmp_name'];
@@ -60,9 +61,20 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 			print "Error Code : ".$_FILES['pdfFile']['error']."<br/>";
 		}
                 }
+=======
+        if(isset($_POST['btn_upload'])){
+           $filetmp = $_FILES["file"]["tmp_name"];
+	$filename = $_FILES["file"]["name"];
+	$filetype = $_FILES["file"]["type"];
+	$filepath = "saved/".$filename;
+	move_uploaded_file($filetmp,$filepath);
+	$sql = "INSERT INTO file_upload (file_name,upload_on,status) VALUES ('$filename','$filepath','$filetype')";
+	mysqli_query($con, $sql);
+>>>>>>> 8f5f442c65fe60e77941626a17c3a103d8a1373b
 }
-        realpath(dirname(getcwd()))
-        ?>
+
+
+    ?>
 <div class="super_container">
 
 	<!-- Header -->
@@ -214,18 +226,17 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 							</div>
 							</div>
 						</div>
+
+                                    
                                     <?php
                                         $sql = "Select upload from `privilage` where usr_id= 3" ;
                                         $result = mysqli_query($con,$sql);
                                         $x = mysqli_fetch_array($result);
                                     ?>
                                      <?php if( $x[0] == "yes"  ) :?>
-                                    <form class="section_title text-center" enctype="multipart/form-data"
-                                        action="<?php print $_SERVER['PHP_SELF']?>" method="post">
-                                <p><input  type="hidden" name="MAX_FILE_SIZE" value="20000000000" />
-                                    <input accept=""type="file" name="pdfFile" /><br />
-                                    <br />
-                                    <input   type="submit" value="upload!" /></p>
+                                    <form method="POST" enctype="multipart/form-data" action="">
+                                            <input type="file" name="file">
+                                            <input type="submit" value="Upload" name ="btn_upload"> 
                                     </form>
                                     <?php endif ;?>
 						<div class="instructor_title">AI</div>
