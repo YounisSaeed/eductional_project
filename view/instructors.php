@@ -212,7 +212,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 							</div>
 						</div>
                                     <?php
-                                        $sql = "Select upload from `privilage` where usr_id= 2" ;
+                                        $sql = "Select upload from `privilage` where usr_id= 3" ;
                                         $result = mysqli_query($con,$sql);
                                         $x = mysqli_fetch_array($result);
                                     ?>

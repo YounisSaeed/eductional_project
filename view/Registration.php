@@ -6,7 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Educational System master</title>
-        <link rel="stylesheet" href="create.css"/>
+        <link rel="stylesheet" href="styles/create.css"/>
     </head>
     <body>
         <div class="createbox">
