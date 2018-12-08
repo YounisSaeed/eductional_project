@@ -480,7 +480,7 @@ section
 }
 .main_nav li:not(:last-child)
 {
-	margin-right: 20px;
+	margin-right: 10px;
 }
 .main_nav li a
 {

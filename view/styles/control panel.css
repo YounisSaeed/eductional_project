@@ -51,7 +51,7 @@ button:hover
 .admin 
 {
     width: 350px;
-    height: 350px;
+   
     border: 10px ;
     border-color: black;
     border-top: none;
@@ -68,7 +68,7 @@ button:hover
 {
         margin-left:60px;
 }
-.admin input[type=text] , .admin input[type=email]
+.admin input[type=text] , .admin input[type=email] , .admin input[type=date]
 {
     width:250px;
     height:30px;

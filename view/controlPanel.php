@@ -1,5 +1,6 @@
 <?php
-include_once 'connection.php';
+    session_start();
+    include_once 'connection.php';
 ?>
 
 <?php
@@ -44,7 +45,7 @@ include_once 'connection.php';
 								<div class="top_bar_right ml-auto">
 
 									<!-- Language -->
-									<div class="top_bar_lang">
+<!--									<div class="top_bar_lang">
 										<span class="top_bar_title">site language:</span>
 										<ul class="lang_list">
 											<li class="hassubs">
@@ -58,7 +59,7 @@ include_once 'connection.php';
 												</ul>
 											</li>
 										</ul>
-									</div>
+									</div>-->
 
 									<!-- Social -->
 									<div class="top_bar_social">
@@ -91,12 +92,36 @@ include_once 'connection.php';
 							<nav class="main_nav_contaner">
                                                            
 								 <ul class="main_nav">
-									<li class="active"><a href="index.php">Home</a></li>
+                                                                     <?php
+                                                                        if(isset($_SESSION['user']))
+                                                                        {
+                                                                            $sess_count = count($_SESSION);
+                                                                            for($i = 1 ; $i <= $sess_count - 2 ; $i++)
+                                                                            {
+                                                                                $sql_pname = "select page_url_header,page_name from `urls` where page_id = '".$_SESSION['page'.$i]."'";
+                                                                                $result_pname = mysqli_query($conn, $sql_pname);
+                                                                                $array_unpage = array();
+                                                                                if($result_pname){
+                                                                                    while ($row_n = mysqli_fetch_array($result_pname)){
+                                                                                        if($row_n['page_name'] != 'Single_Blog' && $row_n['page_name'] != 'Single_Courses'){
+                                                                                            echo '<li><a href="'.$row_n['page_url_header'].'">'.$row_n['page_name'].'</a></li>';
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        } else {
+                                                                            echo '<li><a href="index.php">Home</a></li>';
+                                                                            echo '<li><a href="courses.php">Courses</a></li>';
+                                                                            echo '<li><a href="contact.php">Contact</a></li>';
+                                                                            echo '<li><a href="blog.php">Blog</a></li>';
+                                                                        }
+                                                                    ?>
+<!--									<li class="active"><a href="index.php">Home</a></li>
 									<li><a href="courses.php">Courses</a></li>
 									<li><a href="instructors.php">Instructors</a></li>
 									<li><a href="#">Events</a></li>
 									<li><a href="blog.php">Blog</a></li>
-									<li><a href="contact.php">Contact</a></li>
+									<li><a href="contact.php">Contact</a></li>-->
                                                                        
 								</ul> 
 							</nav>
@@ -114,10 +139,18 @@ include_once 'connection.php';
 
 								<!-- Hamburger -->
 
-								<div class="user"><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></div>
-								<div class="hamburger menu_mm">
-									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
-								</div>
+								<?php
+                                                                    if(isset($_SESSION['user'])){
+                                                                        echo '<div class="user_log"><a href="logout.php" class="a_log">Logout</a></div>
+                                                                              ';
+                                                                    }
+                                                                    else {
+                                                                        echo '<div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
+                                                                              <div class="hamburger menu_mm">
+                                                                              <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+                                                                              </div>';
+                                                                    }
+                                                                ?>
 							</div>
 
 						</div>
@@ -155,13 +188,15 @@ include_once 'connection.php';
   <div class="admin">
       <p> Create New Admin </p>
      <form method="post" action='Privilege.php'>
-          <input type ="text" name="f_name" placeholder="First name"> <br>
-          <input type ="text" name="l_name" placeholder="Last name"> <br>
-          <input type ="email" name="email" placeholder="E_mail"> <br><br>
-          Experience :
-          <input type ="radio" name="experience" value="medium"> medium
-          <input type ="radio" name="experience" value="good"> good
-          <input type ="radio" name="experience" value="very good"> very good
+          <input type ="text" name="f_name" placeholder="Name"> <br>
+          <input type ="text" name="username" placeholder="user name"> <br>
+          <input type ="text" name="password" placeholder="password"> <br>
+          <input type ="email" name="email" placeholder="E_mail"> <br>
+          <input type ="text" name="phone" placeholder="phone"> <br>
+          <input type ="date" name="date" placeholder="date"> <br> <br>
+          Gender :
+          <input type ="radio" name="gender" value="male"> Male
+          <input type ="radio" name="gender" value="female"> Female
           <button name="add"> Add </button>
           
       </from>

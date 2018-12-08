@@ -20,15 +20,16 @@ $result = mysqli_query($conn, $sql);
 
    
 
-
-
 else if(isset($_POST["add"])){
     
 $fname = $_POST["f_name"];
-$lname = $_POST["l_name"];
+$username = $_POST["username"];
+$password = $_POST["password"];
 $email =  $_POST["email"];
-$exp = $_POST["experience"];
-$sql = " insert into `users` values ( 1 , '".$fname."' , '".$lname."' , '".$email."' , '".$exp."' )";
+$phone = $_POST["phone"];
+$date = $_POST["date"];
+$gender = $_POST["gender"];
+$sql = " insert into `users` values ( 1 , '".$fname."' , '".$username."' ,'".$password."' , '".$email."' , '".$phone."' ,'".$gender."' ,'".$date."'  )";
 $result = mysqli_query($conn, $sql);
 if($result)
 {
