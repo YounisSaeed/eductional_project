@@ -265,7 +265,7 @@
 				</div>
 			</div>
 
-			<div class="row register">
+			<!--<div class="row register">
 				<div class="col-lg-6 offset-lg-3">
 					<div class="register_form_title">Post a Comment</div>
 					<div class="register_form_container">
@@ -289,7 +289,7 @@
 				</div>
 			</div>
 
-			<div class="row comments">
+			<!--<div class="row comments">
 				<div class="col-lg-6 offset-lg-3">
 					<div class="comments_title">Comments <span>(12)</span></div>
 					<div class="comments_container">
@@ -347,7 +347,7 @@
 			</div>
 		</div>
 	</div>
-
+-->
 	<!-- Footer -->
 
 	<footer class="footer">

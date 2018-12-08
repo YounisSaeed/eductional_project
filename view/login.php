@@ -29,7 +29,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         
         <title>Education system</title>
-        <link rel="stylesheet" href="login.css"/>
+        <link rel="stylesheet" href="styles/login.css"/>
         
     </head>
     <body>
@@ -48,7 +48,7 @@ and open the template in the editor.
             </form>
                <!-- <a href="forgetpass.php" class="forget"><p>Forget  your password?</p></a><br/>-->
             
-                <a href="forgetpass.php" class="forget"><p>Forget  your password?</p></a><br/>
+                <a href="forgetPass.php" class="forget"><p>Forget  your password?</p></a><br/>
                 <a href="Registration.php" class="create"><p>Create New Account</p></a>
             
         </div>
