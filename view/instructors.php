@@ -18,48 +18,18 @@
 <body>
 <?php
 $con= mysqli_connect("localhost", "root", "", "educational");
-            if ( isset( $_FILES['pdfFile'] ) ) {
-	if ($_FILES['pdfFile']['type'] == "application/pdf") {
-		$source_file = $_FILES['pdfFile']['tmp_name'];
-		$dest_file = "upload/".$_FILES['pdfFile']['name'];
-                $Size=$_FILES['pdfFile']['size']/1000;
-                ////
-                $allowedExtension= array("pdf");
-            $pdfExtension = end(explode('.', $dest_file));
-            
-            $pdffile = rand(0,100000). '.' .$pdfExtension;
-                
-            
-                ////
-		if (file_exists($dest_file)) {
-			print "The file name already exists!!";
-		}
-		else {
-			/*move_uploaded_file( $source_file, $dest_file )
-			or die ("Error!!");*/
-			if($_FILES['pdfFile']['error'] == 0) {
-				print "Pdf file uploaded successfully!";
-				print "<b><u>Details : </u></b><br/>";
-				echo $pdffile;
-				print "File Size : ".$_FILES['pdfFile']['size']." bytes"."<br/>";
-				print "File location : upload/".$_FILES['pdfFile']['name']."<br/>";
-                                $sql= "insert into file_upload 
-                        (description,file_name,size)
-                        VALUES('$dest_file','$pdffile','$Size') ";
-                mysqli_query($con, $sql);
-			}
-		}
-	}
-	else {
-		if ( $_FILES['pdfFile']['type'] != "application/pdf") {
-			print "Error occured while uploading file : ".$_FILES['pdfFile']['name']."<br/>";
-			print "Invalid  file extension, should be pdf !!"."<br/>";
-			print "Error Code : ".$_FILES['pdfFile']['error']."<br/>";
-		}
-                }
+        if(isset($_POST['btn_upload'])){
+           $filetmp = $_FILES["file"]["tmp_name"];
+	$filename = $_FILES["file"]["name"];
+	$filetype = $_FILES["file"]["type"];
+	$filepath = "saved/".$filename;
+	move_uploaded_file($filetmp,$filepath);
+	$sql = "INSERT INTO file_upload (file_name,upload_on,status) VALUES ('$filename','$filepath','$filetype')";
+	mysqli_query($con, $sql);
 }
-        realpath(dirname(getcwd()))
-        ?>
+
+
+    ?>
 <div class="super_container">
 
 	<!-- Header -->
@@ -211,18 +181,15 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 							</div>
 							</div>
 						</div>
-                                    <?php
+                                    <?php 
                                         $sql = "Select upload from `privilage` where usr_id= 2" ;
                                         $result = mysqli_query($con,$sql);
                                         $x = mysqli_fetch_array($result);
                                     ?>
                                      <?php if( $x[0] == "yes"  ) :?>
-                                    <form class="section_title text-center" enctype="multipart/form-data"
-                                        action="<?php print $_SERVER['PHP_SELF']?>" method="post">
-                                <p><input  type="hidden" name="MAX_FILE_SIZE" value="20000000000" />
-                                    <input accept=""type="file" name="pdfFile" /><br />
-                                    <br />
-                                    <input   type="submit" value="upload!" /></p>
+                                    <form method="POST" enctype="multipart/form-data" action="">
+                                            <input type="file" name="file">
+                                            <input type="submit" value="Upload" name ="btn_upload"> 
                                     </form>
                                     <?php endif ;?>
 						<div class="instructor_title">AI</div>
