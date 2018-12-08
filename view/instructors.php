@@ -21,7 +21,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
             if ( isset( $_FILES['pdfFile'] ) ) {
 	if ($_FILES['pdfFile']['type'] == "application/pdf") {
 		$source_file = $_FILES['pdfFile']['tmp_name'];
-		$dest_file = "upload/".$_FILES['pdfFile']['name'];
+		$dest_file = "../Uploaded_Courses/".$_FILES['pdfFile']['name'];
                 $Size=$_FILES['pdfFile']['size']/1000;
                 ////
                 $allowedExtension= array("pdf");
@@ -37,12 +37,15 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 		else {
 			/*move_uploaded_file( $source_file, $dest_file )
 			or die ("Error!!");*/
+                    $file = $_FILES["pdfFile"];
+                    move_uploaded_file($file["tmp_name"], "../Uploaded_Courses/" . $file["name"]);
+
 			if($_FILES['pdfFile']['error'] == 0) {
 				print "Pdf file uploaded successfully!";
 				print "<b><u>Details : </u></b><br/>";
 				echo $pdffile;
 				print "File Size : ".$_FILES['pdfFile']['size']." bytes"."<br/>";
-				print "File location : upload/".$_FILES['pdfFile']['name']."<br/>";
+				print "File location : ../Uploaded_Courses/".$_FILES['pdfFile']['name']."<br/>";
                                 $sql= "insert into file_upload 
                         (description,file_name,size)
                         VALUES('$dest_file','$pdffile','$Size') ";
