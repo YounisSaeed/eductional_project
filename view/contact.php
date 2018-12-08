@@ -1,15 +1,7 @@
 <?php
-<<<<<<< HEAD
+
     session_start();
-include 'connection.php';
-//    include '../classes/visitor.php';
-//    $vis=new visitor;
-//    if(isset($_POST['submit'])){
-//        if($vis->sendMessage('name', 'email', 'message')){
-//            echo 'success';
-//        }
-//    }
-=======
+    include 'connection.php';
     include '../classes/visitor.php';
     include '../classes/Enc_Dec.php';
     $vis=new visitor;
@@ -26,7 +18,6 @@ include 'connection.php';
             echo 'success';
         }
     }
->>>>>>> 995a18aabf13116de4446bf7929a12d0a23affbb
 ?>
 <!DOCTYPE html>
 <html lang="en">

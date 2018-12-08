@@ -3,13 +3,15 @@ include_once 'connection.php';
 ?>
 
 <?php
+include '../database/Connection.php';
+$data=new Connection;
 session_start();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $user = $_POST['useremail'];
     $pass = $_POST['password'];
     $sql = "select id,email,password from `users` where email ='".$user."' and password='".$pass."'";
-    $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($data->conn, $sql);
     if($result)
     {
         if($row = mysqli_fetch_assoc($result))
@@ -18,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $id = $row['id'];
             $_SESSION['user_id'] = $id;
             $sql_idtype = "select pg_id from `privilage` where usr_id = '".$id."'";        
-            $result_id = mysqli_query($conn, $sql_idtype);
+            $result_id = mysqli_query($data->conn, $sql_idtype);
             if($result_id)
             {
                 $array_id = array();
@@ -45,7 +47,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 //                }
  
                 $sql_fpage = "select page_url_header from `urls` where page_id = '".$_SESSION['page1']."'";
-                $result_fpage = mysqli_query($conn, $sql_fpage);
+                $result_fpage = mysqli_query($data->conn, $sql_fpage);
                 if($page=mysqli_fetch_assoc($result_fpage))
                 {
                     header("Location: ".$page['page_url_header']);

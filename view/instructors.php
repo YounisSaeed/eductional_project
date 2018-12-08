@@ -24,50 +24,7 @@
 <body>
 <?php
 $con= mysqli_connect("localhost", "root", "", "educational");
-<<<<<<< HEAD
-            if ( isset( $_FILES['pdfFile'] ) ) {
-	if ($_FILES['pdfFile']['type'] == "application/pdf") {
-		$source_file = $_FILES['pdfFile']['tmp_name'];
-		$dest_file = "../Uploaded_Courses/".$_FILES['pdfFile']['name'];
-                $Size=$_FILES['pdfFile']['size']/1000;
-                ////
-                $allowedExtension= array("pdf");
-            $pdfExtension = end(explode('.', $dest_file));
-            
-            $pdffile = rand(0,100000). '.' .$pdfExtension;
-                
-            
-                ////
-		if (file_exists($dest_file)) {
-			print "The file name already exists!!";
-		}
-		else {
-			/*move_uploaded_file( $source_file, $dest_file )
-			or die ("Error!!");*/
-                    $file = $_FILES["pdfFile"];
-                    move_uploaded_file($file["tmp_name"], "../Uploaded_Courses/" . $file["name"]);
 
-			if($_FILES['pdfFile']['error'] == 0) {
-				print "Pdf file uploaded successfully!";
-				print "<b><u>Details : </u></b><br/>";
-				echo $pdffile;
-				print "File Size : ".$_FILES['pdfFile']['size']." bytes"."<br/>";
-				print "File location : ../Uploaded_Courses/".$_FILES['pdfFile']['name']."<br/>";
-                                $sql= "insert into file_upload 
-                        (description,file_name,size)
-                        VALUES('$dest_file','$pdffile','$Size') ";
-                mysqli_query($con, $sql);
-			}
-		}
-	}
-	else {
-		if ( $_FILES['pdfFile']['type'] != "application/pdf") {
-			print "Error occured while uploading file : ".$_FILES['pdfFile']['name']."<br/>";
-			print "Invalid  file extension, should be pdf !!"."<br/>";
-			print "Error Code : ".$_FILES['pdfFile']['error']."<br/>";
-		}
-                }
-=======
         if(isset($_POST['btn_upload'])){
            $filetmp = $_FILES["file"]["tmp_name"];
 	$filename = $_FILES["file"]["name"];
@@ -76,7 +33,6 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 	move_uploaded_file($filetmp,$filepath);
 	$sql = "INSERT INTO file_upload (file_name,upload_on,status) VALUES ('$filename','$filepath','$filetype')";
 	mysqli_query($con, $sql);
->>>>>>> 8f5f442c65fe60e77941626a17c3a103d8a1373b
 }
 
 

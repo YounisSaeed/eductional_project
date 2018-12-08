@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once 'connection.php';
+    //include_once 'connection.php';
 ?>
 
 
@@ -87,13 +87,15 @@
 							<nav class="main_nav_contaner">
 								<ul class="main_nav">
                                                                     <?php
+                                                                    include '../database/Connection.php';
+                                                                        $data=new Connection();
                                                                         if(isset($_SESSION['user']))
                                                                         {
                                                                             $sess_count = count($_SESSION);
                                                                             for($i = 1 ; $i <= $sess_count - 2 ; $i++)
                                                                             {
                                                                                 $sql_pname = "select page_url_header,page_name from `urls` where page_id = '".$_SESSION['page'.$i]."'";
-                                                                                $result_pname = mysqli_query($conn, $sql_pname);
+                                                                                $result_pname = mysqli_query($data->conn, $sql_pname);
                                                                                 $array_unpage = array();
                                                                                 if($result_pname){
                                                                                     while ($row_n = mysqli_fetch_array($result_pname)){
@@ -144,13 +146,6 @@
                                                                     }
                                                                 ?>
 
-<<<<<<< HEAD
-=======
-								<div class="user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
-								<div class="hamburger menu_mm">
-									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
-								</div>
->>>>>>> 995a18aabf13116de4446bf7929a12d0a23affbb
 							</div>
 .3
 						</div>
