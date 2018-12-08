@@ -3,10 +3,7 @@
     include_once 'connection.php';
 ?>
 
-<?php
-    $query = "select * from `usertype` where typ!='admin' ";
-    $result = mysqli_query($conn, $query); 
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,15 +19,12 @@
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
-<link rel="stylesheet" type="text/css" href="styles/control panel.css">
-<link rel="stylesheet" type="text/css" href="styles/admin.css">
-
 </head>
 <body>
 
 <div class="super_container">
 
-	<!-- Header -->
+		<!-- Header -->
 
 	<header class="header">
 			
@@ -45,7 +39,7 @@
 								<div class="top_bar_right ml-auto">
 
 									<!-- Language -->
-									<div class="top_bar_lang">
+<!--									<div class="top_bar_lang">
 										<span class="top_bar_title">site language:</span>
 										<ul class="lang_list">
 											<li class="hassubs">
@@ -59,7 +53,7 @@
 												</ul>
 											</li>
 										</ul>
-									</div>
+									</div>-->
 
 									<!-- Social -->
 									<div class="top_bar_social">
@@ -160,51 +154,67 @@
 		</div>
 
 	</header>
+ 
+        <div class="usertype" >
+            <?php 
+                   /*$sql= " select * from usertype " ;
+                   $result=mysqli_query($conn, $sql);*/
+                   $query = "select * from `usertype`";
+                   $result = mysqli_query($conn, $query); 
+                   if(mysqli_num_rows($result) > 0 ) {
+                     echo "<table border='1' width='50%' height='20'>
+                      <tr>
+                      <th>id</th>
+                      <th>type</th>
+                      <th>state</th>
+                      <th>block/unblock</th>
+                      </tr>";
 
+                     for ($i=0;$row = mysqli_fetch_array($result); $i++)
+                     
+                      {
+                     echo "<tr>";
+                      echo "<td>" . $row['id'] . "</td>";
+                     echo "<td>" . $row['typ'] . "</td>";
+                     echo "<td>" . $row['state'] . "</td>";
+                     echo "<td>" ."<form action='privilege.php' method='post'> <input type='checkbox' name='state[]' value= ". $row['typ'] ." > " . "</td>";
+                     echo "</tr>";
+                      
 
-
-<div class="privlege">
-     <form method="post" action='Privilege.php'>
-             <select name="usertype" id="usertype" value="usertype">
-                
-                <option> -- Select Usertype -- </option>
-                 <?php while($row1 = mysqli_fetch_array($result)):;?>
-                 <option> <?php echo $row1[1]; ?></option>   
-                 <?php endwhile ;?> 
-              <!-- <option value="Admin">Admin</option>
-               <option value="Instructor">Instructor</option>
-               <option value="Student">student</option> -->
-               </select>
-               
-               <div class="check">
-                   <input type="checkbox" id = "pagename" value="Home" name="pagename[]" > Home
-                  <input type="checkbox" id = "pagename" value="Courses" name="pagename[]" > Courses
-                  <input type="checkbox" id = "pagename" value="Single_Courses" name="pagename[]" > Single_Courses
-
-                  <input type="checkbox" id = "pagename" value="Blog" name="pagename[]" > Blog <br> <br>
-                  <input type="checkbox" id = "pagename" value="Single_Blog" name="pagename[]" style="margin-left:75px;"> Single_Blog
-                  
-                  <input type="checkbox" id = "pagename" value="Contact" name="pagename[]" > Contact 
-                  <input type="checkbox" id = "pagename" value="Instructors" name="pagename[]" > Instructors
-               </div>
-               
-               <button  name="send"> Submit</button>
-           </form>
-      
-       </div>
+                       }
+                    echo "</table>";
+                     }
+                   else 
+                    {
+                        echo " No Data to show ";
+                    }
+            ?>
+            <form method="post" action="privilege.php"> 
+            <button name = "block" > block </button>
+            <button name = "Unblock" > Unblock </button>
+            </form>
+        </div>
         
-       <div class="ins">
-            <form action="Privilege.php" method="post">
-                <P style="color: #fff">Instructor Privillege :</P>
-                <div class="radio">
-                    <input type="radio" name="upload" value="yes" > yes
-                    <input type="radio" name="upload" value="no" >  NO 
-                </div>
-                 <button name="done">done</button>
+</div>
 
-            </form> 
-       </div>   
-          
-  </div>
 </body>
 </html>
+
+<style>
+    .usertype 
+    {
+        width:50%;
+        height:200px;
+        text-align:center;
+        margin: 450px;
+        margin-top:250px;
+    }
+    button 
+    {
+        border-radius:10px; 
+        margin:20px;
+        width:70px;
+        height:50px;
+    }
+    
+</style>

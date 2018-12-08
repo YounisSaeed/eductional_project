@@ -3,10 +3,16 @@
     include_once 'connection.php';
 ?>
 
+<?php
+    $query = "select * from `usertype`";
+    $result = mysqli_query($conn, $query); 
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Blog</title>
+<title>Lingua</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Lingua project">
@@ -16,9 +22,9 @@
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link href="plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/blog.css">
-<link rel="stylesheet" type="text/css" href="styles/blog_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/control panel.css">
 </head>
 <body>
 
@@ -39,7 +45,7 @@
 								<div class="top_bar_right ml-auto">
 
 									<!-- Language -->
-									<!--<div class="top_bar_lang">
+<!--									<div class="top_bar_lang">
 										<span class="top_bar_title">site language:</span>
 										<ul class="lang_list">
 											<li class="hassubs">
@@ -53,8 +59,8 @@
 												</ul>
 											</li>
 										</ul>
-									</div>
-                                                                         -->       
+									</div>-->
+
 									<!-- Social -->
 									<div class="top_bar_social">
 										<span class="top_bar_title social_title">follow us</span>
@@ -70,7 +76,7 @@
 					</div>
 				</div>
 			</div>				
-		</div>
+		</div> 
 
 		<!-- Header Content -->
 		<div class="header_container">
@@ -84,8 +90,9 @@
 								</a>
 							</div>
 							<nav class="main_nav_contaner">
-								<ul class="main_nav">
-                                                                    <?php
+                                                           
+								 <ul class="main_nav">
+                                                                     <?php
                                                                         if(isset($_SESSION['user']))
                                                                         {
                                                                             $sess_count = count($_SESSION);
@@ -109,13 +116,14 @@
                                                                             echo '<li><a href="blog.php">Blog</a></li>';
                                                                         }
                                                                     ?>
-<!--									<li><a href="index.php">Home</a></li>
+<!--									<li class="active"><a href="index.php">Home</a></li>
 									<li><a href="courses.php">Courses</a></li>
 									<li><a href="instructors.php">Instructors</a></li>
 									<li><a href="#">Events</a></li>
 									<li><a href="blog.php">Blog</a></li>
 									<li><a href="contact.php">Contact</a></li>-->
-								</ul>
+                                                                       
+								</ul> 
 							</nav>
 							<div class="header_content_right ml-auto text-right">
 								<div class="header_search">
@@ -152,227 +160,57 @@
 		</div>
 
 	</header>
+ 
+ <div class="privlege">
+     <form method="post" action='Privilege.php'>
+             <select name="usertype" id="usertype" value="usertype" required>
+                
+                <option> -- Select Usertype -- </option>
+                 <?php while($row1 = mysqli_fetch_array($result)):;?>
+                 <option> <?php echo $row1[1]; ?></option>   
+                 <?php endwhile ;?> 
+              <!-- <option value="Admin">Admin</option>
+               <option value="Instructor">Instructor</option>
+               <option value="Student">student</option> -->
+               </select>
+               
+               <div class="check">
+                  <input type="checkbox" id = "pagename" value="Home" name="pagename[]" > Home
+                  <input type="checkbox" id = "pagename" value="Courses" name="pagename[]" > Courses
+                  <input type="checkbox" id = "pagename" value="Single_Courses" name="pagename[]" > Single_Courses
 
-	<!-- Menu -->
-
-	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
-		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-		<div class="search">
-			<form action="#" class="header_search_form menu_mm">
-				<input type="search" class="search_input menu_mm" placeholder="Search" required="required">
-				<button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm">
-					<i class="fa fa-search menu_mm" aria-hidden="true"></i>
-				</button>
-			</form>
-		</div>
-		<nav class="menu_nav">
-			<ul class="menu_mm">
-				<li class="menu_mm"><a href="index.php">Home</a></li>
-				<li class="menu_mm"><a href="courses.php">Courses</a></li>
-				<li class="menu_mm"><a href="instructors.php">Instructors</a></li>
-				<li class="menu_mm"><a href="#">Events</a></li>
-				<li class="menu_mm"><a href="blog.php">Blog</a></li>
-				<li class="menu_mm"><a href="contact.php">Contact</a></li>
-			</ul>
-		</nav>
-		<div class="menu_extra">
-			<div class="menu_phone"><span class="menu_title">phone:</span>+44 300 303 0266</div>
-			<div class="menu_social">
-				<span class="menu_title">follow us</span>
-				<ul>
-					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	
-	<!-- Home -->
-
-	<div class="home">
-		
-	</div>
-
-	<!-- Blog -->
-
-	<div class="blog">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="welcome_title">Welcome to our blog!</div>
-				</div>
-			</div>
-			<div class="row categories_row">
-
-				<!-- Category -->
-				<div class="col-xl-2 col-lg-4 col-md-6 blog_category_col">
-					<a href="blog.php">
-						<div class="blog_category">
-							<div class="blog_category_image"><img src="images/blog_1.jpg" alt=""></div>
-							<div class="blog_category_title">travel</div>
-						</div>
-					</a>
-				</div>
-
-				<!-- Category -->
-				<div class="col-xl-2 col-lg-4 col-md-6 blog_category_col">
-					<a href="blog.php">
-						<div class="blog_category">
-							<div class="blog_category_image"><img src="images/blog_2.jpg" alt=""></div>
-							<div class="blog_category_title">languages</div>
-						</div>
-					</a>
-				</div>
-
-				<!-- Category -->
-				<div class="col-xl-2 col-lg-4 col-md-6 blog_category_col">
-					<a href="blog.php">
-						<div class="blog_category">
-							<div class="blog_category_image"><img src="images/blog_3.jpg" alt=""></div>
-							<div class="blog_category_title">cultures</div>
-						</div>
-					</a>
-				</div>
-
-				<!-- Category -->
-				<div class="col-xl-2 col-lg-4 col-md-6 blog_category_col">
-					<a href="blog.php">
-						<div class="blog_category">
-							<div class="blog_category_image"><img src="images/blog_4.jpg" alt=""></div>
-							<div class="blog_category_title">fashion</div>
-						</div>
-					</a>
-				</div>
-
-				<!-- Category -->
-				<div class="col-xl-2 col-lg-4 col-md-6 blog_category_col">
-					<a href="blog.php">
-						<div class="blog_category">
-							<div class="blog_category_image"><img src="images/blog_5.jpg" alt=""></div>
-							<div class="blog_category_title">cooking</div>
-						</div>
-					</a>
-				</div>
-
-				<!-- Category -->
-				<div class="col-xl-2 col-lg-4 col-md-6 blog_category_col">
-					<a href="blog.php">
-						<div class="blog_category">
-							<div class="blog_category_image"><img src="images/blog_6.jpg" alt=""></div>
-							<div class="blog_category_title">hobbies</div>
-						</div>
-					</a>
-				</div>
-			</div>
-
-			<!-- Blog Posts -->
-			
-			<div class="row blog_row">
-
-				<!-- Blog Post -->
-				<div class="col-lg-6">
-					<div class="blog_post">
-						<div class="blog_image" style="background-image:url(images/blog_7.jpg)"></div>
-						<div class="blog_title_container">
-							<div class="blog_post_category"><a href="#">travel</a></div>
-							<div class="blog_post_title"><a href="blog_single.php">Design Better Forms</a></div>
-							<div class="blog_post_text">
-								<p>Whether it is a signup flow, a multi-view stepper, or a monotonous data entry interface, forms are one of the most important components of digital product design.</p>
-							</div>
-							<div class="read_more"><a href="blog_single.php">Read More <img src="images/right.png" alt=""></a></div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Blog Post -->
-				<div class="col-lg-6">
-					<div class="blog_post">
-						<div class="blog_image" style="background-image:url(images/blog_8.jpg)"></div>
-						<div class="blog_title_container">
-							<div class="blog_post_category"><a href="#">travel</a></div>
-							<div class="blog_post_title"><a href="blog_single.php">Art Helps Healing</a></div>
-							<div class="blog_post_text">
-								<p>Whether it is a signup flow, a multi-view stepper, or a monotonous data entry interface, forms are one of the most important components of digital product design.</p>
-							</div>
-							<div class="read_more"><a href="blog_single.php">Read More <img src="images/right.png" alt=""></a></div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Blog Post -->
-				<div class="col-lg-6">
-					<div class="blog_post">
-						<div class="blog_image" style="background-image:url(images/blog_9.jpg)"></div>
-						<div class="blog_title_container">
-							<div class="blog_post_category"><a href="#">travel</a></div>
-							<div class="blog_post_title"><a href="blog_single.php">Art Helps Healing</a></div>
-							<div class="blog_post_text">
-								<p>Whether it is a signup flow, a multi-view stepper, or a monotonous data entry interface, forms are one of the most important components of digital product design.</p>
-							</div>
-							<div class="read_more"><a href="blog_single.php">Read More <img src="images/right.png" alt=""></a></div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Blog Post -->
-				<div class="col-lg-6">
-					<div class="blog_post">
-						<div class="blog_image" style="background-image:url(images/blog_10.jpg)"></div>
-						<div class="blog_title_container">
-							<div class="blog_post_category"><a href="#">travel</a></div>
-							<div class="blog_post_title"><a href="blog_single.php">Art Helps Healing</a></div>
-							<div class="blog_post_text">
-								<p>Whether it is a signup flow, a multi-view stepper, or a monotonous data entry interface, forms are one of the most important components of digital product design.</p>
-							</div>
-							<div class="read_more"><a href="blog_single.php">Read More <img src="images/right.png" alt=""></a></div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Blog Post -->
-				<div class="col-lg-6">
-					<div class="blog_post">
-						<div class="blog_image" style="background-image:url(images/blog_11.jpg)"></div>
-						<div class="blog_title_container">
-							<div class="blog_post_category"><a href="#">travel</a></div>
-							<div class="blog_post_title"><a href="blog_single.php">Art Helps Healing</a></div>
-							<div class="blog_post_text">
-								<p>Whether it is a signup flow, a multi-view stepper, or a monotonous data entry interface, forms are one of the most important components of digital product design.</p>
-							</div>
-							<div class="read_more"><a href="blog_single.php">Read More <img src="images/right.png" alt=""></a></div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Blog Post -->
-				<div class="col-lg-6">
-					<div class="blog_post">
-						<div class="blog_image" style="background-image:url(images/blog_12.jpg)"></div>
-						<div class="blog_title_container">
-							<div class="blog_post_category"><a href="#">travel</a></div>
-							<div class="blog_post_title"><a href="blog_single.php">Art Helps Healing</a></div>
-							<div class="blog_post_text">
-								<p>Whether it is a signup flow, a multi-view stepper, or a monotonous data entry interface, forms are one of the most important components of digital product design.</p>
-							</div>
-							<div class="read_more"><a href="blog_single.php">Read More <img src="images/right.png" alt=""></a></div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-			<!-- Load More -->
-			<div class="row">
-				<div class="col">
-					<div class="load_more_button"><a href="#">load more</a></div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Footer -->
-
+                  <input type="checkbox" id = "pagename" value="Blog" name="pagename[]" > Blog <br> <br>
+                  <input type="checkbox" id = "pagename" value="Single_Blog" name="pagename[]" style="margin-left:75px;"> Single_Blog
+                  
+                  <input type="checkbox" id = "pagename" value="Contact" name="pagename[]" > Contact 
+                  <input type="checkbox" id = "pagename" value="Instructors" name="pagename[]" > Instructors <br><br>
+                  <input type="checkbox" id = "pagename" value="Adminstrator" name="pagename[]" style="margin-left:180px;"> Adminstrator 
+               </div>
+               
+               <button name="submit"> Submit</button>
+           </form>
+      
+   </div>
+        
+        
+  <div class="admin">
+      <p> Create New Admin </p>
+     <form method="post" action='Privilege.php'>
+         <input type ="text" name="f_name" placeholder="Name" required> <br>
+          <input type ="text" name="username" placeholder="user name" required> <br>
+          <input type ="text" name="password" placeholder="password" required> <br>
+          <input type ="email" name="email" placeholder="E_mail" required> <br>
+          <input type ="text" name="phone" placeholder="phone" required> <br>
+          <input type ="date" name="date" placeholder="date" required> <br> <br>
+          Gender :
+          <input type ="radio" name="gender" value="male" > Male
+          <input type ="radio" name="gender" value="female" > Female
+          <button name="add"> Add </button>
+          
+      </from>
+  </div>       
+        
+        
 	<footer class="footer">
 		<div class="footer_body">
 			<div class="container">
@@ -460,14 +298,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			</div>
 		</div>
 	</footer>
-</div>
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="js/blog.js"></script>
+        
+        
+        
+ </div>
 </body>
 </html>

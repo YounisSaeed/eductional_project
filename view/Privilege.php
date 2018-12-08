@@ -8,50 +8,82 @@ if(isset($_POST["submit"])){
 $usertype = $_POST["usertype"];
 $pname =  $_POST["pagename"];
 //$newpage = implode(',' , $_POST["pagename"]);
-
-$sql= "update `privilage` set pg_id = (select page_id from `urls` where page_name = '$pname' ) where usr_id = (select id FROM `usertype` where typ = '$usertype' )";
-$result = mysqli_query($conn, $sql);
-     if($result)
+for ($i=0; $i<sizeof($pname); $i++)
         {
-      header("Location: control panel.php?cooooont=success");
-      
+          $sql= "insert into `privilage` values( (select id FROM `usertype` where typ = '$usertype' ) , (select page_id from `urls` where page_name = '$pname[$i]' ) , 'no' )" ;
+          $result = mysqli_query($conn, $sql);
         }
+if($result)
+ {
+      header("Location: controlPanel.php?cooooont=success");
+ }
 } 
-
-   
-
 
 
 else if(isset($_POST["add"])){
     
 $fname = $_POST["f_name"];
-$lname = $_POST["l_name"];
+$username = $_POST["username"];
+$password = $_POST["password"];
 $email =  $_POST["email"];
-$exp = $_POST["experience"];
-$sql = " insert into `users` values ( 1 , '".$fname."' , '".$lname."' , '".$email."' , '".$exp."' )";
+$phone = $_POST["phone"];
+$date = $_POST["date"];
+$gender = $_POST["gender"];
+$sql = " insert into `users` values ( 1 , '".$fname."' , '".$username."' ,'".$password."' , '".$email."' , '".$phone."' ,'".$gender."' ,'".$date."'  )";
 $result = mysqli_query($conn, $sql);
 if($result)
 {
-    header("Location: control panel.php?cooooont=success");
-    echo $newpage;
+    header("Location: controlPanel.php?cooooont=success");
 }
+
+}
+
+
+else if(isset($_POST["add"])){
+    
+$fname = $_POST["f_name"];
+$username = $_POST["username"];
+$password = $_POST["password"];
+$email =  $_POST["email"];
+$phone = $_POST["phone"];
+$date = $_POST["date"];
+$gender = $_POST["gender"];
+$sql = " insert into `users` values ( 1 , '".$fname."' , '".$username."' ,'".$password."' , '".$email."' , '".$phone."' ,'".$gender."' ,'".$date."'  )";
+$result = mysqli_query($conn, $sql);
+if($result)
+{
+    header("Location: controlPanel.php?cooooont=success");
+
+}
+
+}
+
+
+else if(isset($_POST["block"])){
+    
+$state= $_POST["state"];
+for ($i=0; $i<sizeof($state); $i++)
+        {
+          $sql = " update `usertype` set state=0 where typ= '$state[$i]' " ;
+          $result = mysqli_query($conn, $sql);
+        }
+    header("Location: BlockUserType.php?cooooont=success");
+
+}
+
+else if(isset($_POST["Unblock"])){
+    
+$state= $_POST["state"];
+for ($i=0; $i<sizeof($state); $i++)
+        {
+          $sql = " update `usertype` set state=1 where typ= '$state[$i]' " ;
+          $result = mysqli_query($conn, $sql);
+        }
+    header("Location: BlockUserType.php?cooooont=success");
 
 }
  //////////////////////////////// admin privilege //////////////////////////////////
 
-else if(isset($_POST["send"])){
-    
-$usertype = $_POST["usertype"];
-$pname = $_POST["pagename"];
-$newpage = implode("," ,$pname);
-$sql= "update `privilage` set pg_id = (select page_id from `urls` where page_name = '$pname' ) where usr_id = (select id FROM `usertype` where typ = '$usertype' )";
-$result = mysqli_query($conn, $sql);
-if($result)
-{
-    header("Location: admin.php?cooooont=success");
-}
-
-}
 
 else if(isset($_POST["done"])){
     
