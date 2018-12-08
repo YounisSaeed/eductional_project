@@ -279,6 +279,10 @@
                             $qu="select * from file_upload";
                             $result= mysqli_query($data->conn, $qu);
                             while($row = mysqli_fetch_assoc($result)){
+                                $instructor_qu="select name from users where username='".$row['ins_usr']."'";
+                                $result_ins= mysqli_query($data->conn, $instructor_qu);
+                                if($row_ins = mysqli_fetch_assoc($result_ins))
+                                    { $ins_name=$row_ins['name'];}
                                 echo '<div class="col-lg-4 course_col">
 					<div class="course">
 						<div class="course_image"><img src="images/course_4.jpg" alt=""></div>
@@ -286,18 +290,18 @@
 							<div class="course_title"><a href="#">'.$row['file_name'].'</a></div>
 							<div class="course_info">
 								<ul>
-									<li><a href="instructors.php">Sarah Parker</a></li>
-									<li><a href="#">English</a></li>
+									<li><a href="instructors.php">'.$ins_name.'</a></li>
+									<li><a href="#">'.$row['subject'].'</a></li>
 								</ul>
 							</div>
 							<div class="course_text">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla.</p>
+								<p>'.$row['description'].'</p>
 							</div>
 						</div>
 						<div class="course_footer d-flex flex-row align-items-center justify-content-start">
 							<div class="course_students"><i class="fa fa-user" aria-hidden="true"></i><span>10</span></div>
 							<div class="course_rating ml-auto"><i class="fa fa-star" aria-hidden="true"></i><span>4,5</span></div>
-							<div class="course_mark course_free trans_200"><a href="'.$row['description'].'">Free</a></div>
+							<div class="course_mark course_free trans_200"><a href="'.$row['upload_on'].'">Free</a></div>
 						</div>
 					</div>
 				</div>';

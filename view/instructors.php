@@ -14,63 +14,35 @@
 <link href="plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/instructors.css">
 <link rel="stylesheet" type="text/css" href="styles/instructors_responsive.css">
+<!---->
+<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css">
+	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+	<link href="css/templatemo_style.css" rel="stylesheet" type="text/css">	
 </head>
 <body>
 <?php
 $con= mysqli_connect("localhost", "root", "", "educational");
-<<<<<<< HEAD
-            if ( isset( $_FILES['pdfFile'] ) ) {
-	if ($_FILES['pdfFile']['type'] == "application/pdf") {
-		$source_file = $_FILES['pdfFile']['tmp_name'];
-		$dest_file = "../Uploaded_Courses/".$_FILES['pdfFile']['name'];
-                $Size=$_FILES['pdfFile']['size']/1000;
-                ////
-                $allowedExtension= array("pdf");
-            $pdfExtension = end(explode('.', $dest_file));
-            
-            $pdffile = rand(0,100000). '.' .$pdfExtension;
-                
-            
-                ////
-		if (file_exists($dest_file)) {
-			print "The file name already exists!!";
-		}
-		else {
-			/*move_uploaded_file( $source_file, $dest_file )
-			or die ("Error!!");*/
-                    $file = $_FILES["pdfFile"];
-                    move_uploaded_file($file["tmp_name"], "../Uploaded_Courses/" . $file["name"]);
 
-			if($_FILES['pdfFile']['error'] == 0) {
-				print "Pdf file uploaded successfully!";
-				print "<b><u>Details : </u></b><br/>";
-				echo $pdffile;
-				print "File Size : ".$_FILES['pdfFile']['size']." bytes"."<br/>";
-				print "File location : ../Uploaded_Courses/".$_FILES['pdfFile']['name']."<br/>";
-                                $sql= "insert into file_upload 
-                        (description,file_name,size)
-                        VALUES('$dest_file','$pdffile','$Size') ";
-                mysqli_query($con, $sql);
-			}
-		}
-	}
-	else {
-		if ( $_FILES['pdfFile']['type'] != "application/pdf") {
-			print "Error occured while uploading file : ".$_FILES['pdfFile']['name']."<br/>";
-			print "Invalid  file extension, should be pdf !!"."<br/>";
-			print "Error Code : ".$_FILES['pdfFile']['error']."<br/>";
-		}
-                }
-=======
         if(isset($_POST['btn_upload'])){
-           $filetmp = $_FILES["file"]["tmp_name"];
-	$filename = $_FILES["file"]["name"];
+        $filetmp = $_FILES["file"]["tmp_name"];
 	$filetype = $_FILES["file"]["type"];
-	$filepath = "saved/".$filename;
+        $filename=$_POST["C_name"];
+        $file_desc=$_POST["desc"];
+        $file_sub=$_POST["sub"];
+	$filepath = "../Uploaded_Courses/".$filename;
 	move_uploaded_file($filetmp,$filepath);
-	$sql = "INSERT INTO file_upload (file_name,upload_on,status) VALUES ('$filename','$filepath','$filetype')";
+        $ins_usr_qu="select username from `users` where username = 'wa11'";
+        if(mysqli_query($con, $ins_usr_qu)){
+            if($row = mysqli_fetch_assoc(mysqli_query($con, $ins_usr_qu))){
+                $ins_usr=$row['username'];
+            }
+        }
+	$sql = "INSERT INTO file_upload (file_name,upload_on,status,subject,description,ins_usr) VALUES ('$filename','$filepath','$filetype','$file_sub','$file_desc','$ins_usr')";
 	mysqli_query($con, $sql);
->>>>>>> 8f5f442c65fe60e77941626a17c3a103d8a1373b
 }
 
 
@@ -91,23 +63,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 								<div class="top_bar_phone"><span class="top_bar_title">phone:</span>+44 300 303 0266</div>
 								<div class="top_bar_right ml-auto">
 
-									<!-- Language -->
-									<!--<div class="top_bar_lang">
-										<span class="top_bar_title">site language:</span>
-										<ul class="lang_list">
-											<li class="hassubs">
-												<a href="#">English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-												<ul>
-													<li><a href="#">Ukrainian</a></li>
-													<li><a href="#">Japanese</a></li>
-													<li><a href="#">Lithuanian</a></li>
-													<li><a href="#">Swedish</a></li>
-													<li><a href="#">Italian</a></li>
-												</ul>
-											</li>
-										</ul>
-									</div>
--->
+						
 									<!-- Social -->
 									<div class="top_bar_social">
 										<span class="top_bar_title social_title">follow us</span>
@@ -209,37 +165,74 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 		</div>
 	</div>
 	
-	<!-- Home -->
+	
+				
+					
+						
+<center>
+<div class="container" style="clear: both;margin-top:180px; text-align: center">
 
-	<div class="home"></div>
+<?php
+    $sql = "Select upload from `privilage` where usr_id= 3" ;
+    $result = mysqli_query($con,$sql);
+    $x = mysqli_fetch_array($result);
+?>
+ <?php if( $x[0] == "yes"  ) :?>
 
-	<!-- Video -->
+                <div class="col-md-12">	
+                        <h1 class="text-center margin-bottom-15">Upload Course</h1>		
+                        <form class="form-horizontal templatemo-contact-form-2 templatemo-container" enctype="multipart/form-data" role="form" action="" method="post">
+                                <div class="row">
+                                        <div class="col-md-6">
+                                                <div class="form-group">				          		          	
+                                                <div class="col-sm-12">
+                                                <div class="templatemo-input-icon-container">
+                                                        <i class="fa fa-user"></i>
+                                                        <input type="text" class="form-control" name="C_name" id="name" placeholder="Course Name" required="">
+                                                </div>		            		            		            
+                                                </div>              
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <div class="templatemo-input-icon-container">
+                                                        <i class="fa fa-info-circle"></i>
+                                                        <input type="text" class="form-control" id="subject" name="sub" placeholder="Subject" required="">
+                                                </div>
+                                                </div>
+                                        </div>
+                                        <div class="form-group" style="float: left">
+                                            <div class="col-sm-12">
+                                                <div class="templatemo-input-icon-container">
+                                                    <label class="btn btn-warning pull-right" style="width: 430px ;text-align: center;padding: 20px;">Choose file<center><input type="file" name="file" style="" required="no file chosen !"></center></label>
+                                                </div>
+                                                </div>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                                <div class="form-group">
+                                          <div class="col-md-12">
+                                            <div class="templatemo-input-icon-container">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                                <textarea rows="10" cols="50" class="form-control" id="message" name="desc" placeholder="Description of Coures" required=""></textarea>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        </div>					
+                                </div>	        
+                        <div class="form-group">
+                          <div class="col-md-12">		            
+                            <input type="submit" value="Upload" class="btn btn-warning pull-right" name ="btn_upload">		            
+                          </div>
+                        </div>		    	
+                      </form>		 
+                </div>
+                                            <?php else:?>
+                <h1 class="text-center margin-bottom-15">Sorry !! , You are not permitted to upload files now</h1>
 
-	<div class="video">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2">
-					<div class="video_content">
-						<div class="video_container_outer">
-							<div class="video_overlay d-flex flex-column align-items-start justify-content-center">
-								<div>Be</div><div>The Best</div><div>Teacher</div>
-							</div>
-							</div>
-						</div>
-
-                                    
-                                    <?php
-                                        $sql = "Select upload from `privilage` where usr_id= 3" ;
-                                        $result = mysqli_query($con,$sql);
-                                        $x = mysqli_fetch_array($result);
-                                    ?>
-                                     <?php if( $x[0] == "yes"  ) :?>
-                                    <form method="POST" enctype="multipart/form-data" action="">
-                                            <input type="file" name="file">
-                                            <input type="submit" value="Upload" name ="btn_upload"> 
-                                    </form>
                                     <?php endif ;?>
-						<div class="instructor_title">AI</div>
+        </div>
+</center>
+<!--						<div class="instructor_title">AI</div>
                                                 <div class="instructor_title">machine learing</div>
                                                 <div class="instructor_title">advanced database</div>
                                                 <div class="instructor_title">introduction of computer vision</div>
@@ -247,116 +240,41 @@ $con= mysqli_connect("localhost", "root", "", "educational");
                                                 <div class="instructor_title">Algorithms</div>
                                                 <div class="instructor_title">information security</div>
                                                 <div class="instructor_title">data storage</div>
-                                                <div class="instructor_title">concept</div>
+                                                <div class="instructor_title">concept</div>-->
                                                 
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<!-- Instructors -->
-
-	<div class="instructors">
-		<div class="instructors_background" style="background-image:url(images/instructors_background.png)"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<h2 class="section_title text-center">The Best Tutors in Town</h2>
-				</div>
-			</div>
-			<div class="row instructors_row">
-
-				<!-- Instructor -->
-				<div class="col-lg-4 instructor_col">
-					<div class="instructor text-center">
-						<div class="instructor_image_container">
-							<div class="instructor_image"><img src="images/instructor_1.jpg" alt=""></div>
-						</div>
-						<div class="instructor_name"><a href="instructors.php">Sarah Parker</a></div>
-						<div class="instructor_title">Teacher</div>
-						<div class="instructor_text">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus in, sagittis fringilla tortor.</p>
-						</div>
-						<div class="instructor_social">
-							<ul>
-								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<!-- Instructor -->
-				<div class="col-lg-4 instructor_col">
-					<div class="instructor text-center">
-						<div class="instructor_image_container">
-							<div class="instructor_image"><img src="images/instructor_2.jpg" alt=""></div>
-						</div>
-						<div class="instructor_name"><a href="instructors.php">Sarah Parker</a></div>
-						<div class="instructor_title">Teacher</div>
-						<div class="instructor_text">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus in, sagittis fringilla tortor.</p>
-						</div>
-						<div class="instructor_social">
-							<ul>
-								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<!-- Instructor -->
-				<div class="col-lg-4 instructor_col">
-					<div class="instructor text-center">
-						<div class="instructor_image_container">
-							<div class="instructor_image"><img src="images/instructor_3.jpg" alt=""></div>
-						</div>
-						<div class="instructor_name"><a href="instructors.php">Sarah Parker</a></div>
-						<div class="instructor_title">Teacher</div>
-						<div class="instructor_text">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus in, sagittis fringilla tortor.</p>
-						</div>
-						<div class="instructor_social">
-							<ul>
-								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
+<br>
+<br>
+<br>
 	<!-- Top Teachers -->
 
 	<div class="teachers">
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<h2 class="section_title text-center">Top Teachers in Every Field</h2>
+					<h2 class="section_title text-center">Your Courses</h2>
 				</div>
 			</div>
 			<div class="row teachers_row">
-
-				<!-- Instructor -->
+                            <?php 
+                            $qu="select * from file_upload where ins_usr='wa11' ";
+                            //mysqli_query($con,$qu);
+                            $result=mysqli_query($con,$qu);
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo '<!-- Instructor -->
 				<div class="col-lg-4 col-md-6">
 					<div class="teacher d-flex flex-row align-items-center justify-content-start">
-						<div class="teacher_image"><div><img src="images/instructor_4.jpg" alt=""></div></div>
+						<div class="teacher_image"><div><img src="images/book.png" alt=""></div></div>
 						<div class="teacher_content">
-							<div class="teacher_name"><a href="instructors.php">Sarah Parker</a></div>
-							<div class="teacher_title">Teacher</div>
+							<div class="teacher_name"><a href="instructors.php">'.$row['file_name'].'</a></div>
+							<div class="teacher_title">'.$row['subject'].'</div>
 						</div>
 					</div>
-				</div>
-
-				<!-- Instructor -->
+				</div>';
+                            }
+                            
+                                ?>
+				<!-- Instructor 
 				<div class="col-lg-4 col-md-6">
 					<div class="teacher d-flex flex-row align-items-center justify-content-start">
 						<div class="teacher_image"><div><img src="images/instructor_5.jpg" alt=""></div></div>
@@ -367,7 +285,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 					</div>
 				</div>
 
-				<!-- Instructor -->
+				<!-- Instructor 
 				<div class="col-lg-4 col-md-6">
 					<div class="teacher d-flex flex-row align-items-center justify-content-start">
 						<div class="teacher_image"><div><img src="images/instructor_6.jpg" alt=""></div></div>
@@ -378,7 +296,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 					</div>
 				</div>
 
-				<!-- Instructor -->
+				<!-- Instructor 
 				<div class="col-lg-4 col-md-6">
 					<div class="teacher d-flex flex-row align-items-center justify-content-start">
 						<div class="teacher_image"><div><img src="images/instructor_7.jpg" alt=""></div></div>
@@ -389,7 +307,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 					</div>
 				</div>
 
-				<!-- Instructor -->
+				<!-- Instructor 
 				<div class="col-lg-4 col-md-6">
 					<div class="teacher d-flex flex-row align-items-center justify-content-start">
 						<div class="teacher_image"><div><img src="images/instructor_8.jpg" alt=""></div></div>
@@ -400,7 +318,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 					</div>
 				</div>
 
-				<!-- Instructor -->
+				<!-- Instructor 
 				<div class="col-lg-4 col-md-6">
 					<div class="teacher d-flex flex-row align-items-center justify-content-start">
 						<div class="teacher_image"><div><img src="images/instructor_9.jpg" alt=""></div></div>
@@ -411,7 +329,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 					</div>
 				</div>
 
-				<!-- Instructor -->
+				<!-- Instructor 
 				<div class="col-lg-4 col-md-6">
 					<div class="teacher d-flex flex-row align-items-center justify-content-start">
 						<div class="teacher_image"><div><img src="images/instructor_10.jpg" alt=""></div></div>
@@ -422,7 +340,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 					</div>
 				</div>
 
-				<!-- Instructor -->
+				<!-- Instructor 
 				<div class="col-lg-4 col-md-6">
 					<div class="teacher d-flex flex-row align-items-center justify-content-start">
 						<div class="teacher_image"><div><img src="images/instructor_11.jpg" alt=""></div></div>
@@ -433,7 +351,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 					</div>
 				</div>
 
-				<!-- Instructor -->
+				<!-- Instructor 
 				<div class="col-lg-4 col-md-6">
 					<div class="teacher d-flex flex-row align-items-center justify-content-start">
 						<div class="teacher_image"><div><img src="images/instructor_12.jpg" alt=""></div></div>
@@ -443,7 +361,7 @@ $con= mysqli_connect("localhost", "root", "", "educational");
 						</div>
 					</div>
 				</div>
-
+-->
 			</div>
 		</div>
 	</div>
